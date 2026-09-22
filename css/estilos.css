@@ -5,7 +5,11 @@
    um fluxograma. Fundo de papel quadriculado, nos de contorno fino com
    canto de 4px, conectores que dobram em 90 graus e terminam em seta
    cheia. Tudo em cor chapada, sem degrade, sem brilho e sem sombra: as
-   texturas sao desenhadas pelo proprio CSS. */
+   texturas sao desenhadas pelo proprio CSS.
+   Sobre essa base entra a camada de jogo: a pagina e um mapa e cada secao
+   e uma fase. A trilha no topo mostra onde a pessoa esta, cada fase tem seu
+   numero, e os semestres do curso viram um caminho de nove fases. O visual
+   nao muda: os nos, os conectores e as setas continuam os do kit. */
 
 /* ---------------------------------------------------------------
    1. Variaveis de cor e medida
@@ -51,6 +55,7 @@
      As pontas sao arredondadas (stroke-linejoin) para ficarem macias */
   --seta-direita: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9.5 5.5 6.5 6.5-6.5 6.5'/%3E%3C/svg%3E");
   --seta-baixo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5.5 9.5 12 16l6.5-6.5'/%3E%3C/svg%3E");
+  --seta-cheia-baixo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.5 7.5 18.5 7.5 12 17z' fill='%23000' stroke='%23000' stroke-width='3.4' stroke-linejoin='round'/%3E%3C/svg%3E");
   --seta-cheia: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5.5 17 12l-9 6.5z' fill='%23000' stroke='%23000' stroke-width='3.4' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   --largura-maxima: 72rem;
@@ -61,6 +66,7 @@
   --raio: 4px;
   --raio-pequeno: 4px;
   --altura-cabecalho: 3.75rem;
+  --altura-trilha: 3.05rem;
   --transicao: 160ms ease;
 
   /* papel quadriculado de rascunho: linha de 1px a cada 48px, 4.5% de
@@ -98,7 +104,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--altura-cabecalho) + 0.5rem);
+  scroll-padding-top: calc(var(--altura-cabecalho) + var(--altura-trilha) + 0.5rem);
 }
 
 body {
@@ -317,6 +323,121 @@ a {
   border-left-color: var(--cor-ambar);
 }
 
+
+/* ---------------------------------------------------------------
+   3b. Trilha de fases
+   E o mapa do jogo e a barra de progresso ao mesmo tempo. Cada no e
+   uma secao da pagina. O quadradinho a esquerda do numero e o estado:
+   vazio para fase ainda nao visitada, cheio para fase ja concluida.
+   A fase atual e a unica em ambar, que no kit significa "o caminho
+   escolhido". No celular a trilha rola de lado.
+   --------------------------------------------------------------- */
+.trilha-caixa {
+  background: var(--cor-tinta-2);
+  border-top: 1px solid var(--cor-linha);
+}
+
+.trilha {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0.45rem var(--respiro-lateral);
+  max-width: var(--largura-maxima);
+  min-height: var(--altura-trilha);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.trilha::-webkit-scrollbar {
+  display: none;
+}
+
+.trilha__item {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+/* o conector de 1px entre uma fase e a proxima */
+.trilha__item + .trilha__item::before {
+  content: "";
+  width: 0.8rem;
+  height: 1px;
+  flex: 0 0 auto;
+  background: var(--cor-linha);
+}
+
+.trilha__no {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--cor-linha);
+  border-radius: var(--raio);
+  background: var(--cor-tinta);
+  color: var(--cor-texto-claro-suave);
+  font-family: var(--fonte-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--transicao), border-color var(--transicao),
+    background-color var(--transicao), color var(--transicao);
+}
+
+.trilha__no:hover {
+  transform: translateY(-2px);
+  border-color: var(--cor-azul-claro);
+  color: var(--cor-branco);
+}
+
+.trilha__marca {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex-shrink: 0;
+  border: 1px solid var(--cor-azul-claro);
+  border-radius: 1px;
+}
+
+.trilha__num {
+  font-weight: 700;
+  color: var(--cor-azul-claro);
+}
+
+.trilha__item.esta-concluida .trilha__marca {
+  background: var(--cor-azul-claro);
+}
+
+.trilha__item.esta-atual .trilha__no {
+  background: var(--cor-ambar);
+  border-color: var(--cor-ambar);
+  color: var(--cor-tinta);
+  animation: pulo-do-no 380ms ease;
+}
+
+.trilha__item.esta-atual .trilha__num,
+.trilha__item.esta-atual .trilha__marca {
+  color: var(--cor-tinta);
+  background: var(--cor-tinta);
+  border-color: var(--cor-tinta);
+}
+
+.trilha__item.esta-atual .trilha__num {
+  background: none;
+}
+
+/* o pulo que o no da quando vira a fase atual, como um bloco de jogo */
+@keyframes pulo-do-no {
+  0% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+  70% { transform: translateY(0); }
+  85% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
 /* ---------------------------------------------------------------
    4. Secoes
    --------------------------------------------------------------- */
@@ -342,11 +463,6 @@ a {
 
 .secao--escura .secao__titulo {
   color: var(--cor-branco);
-}
-
-.secao--escura .secao__titulo::before {
-  /* o mesmo no, agora em azul claro, que e a cor de conexao sobre a tinta */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234fb3e8' stroke-width='1.6'%3E%3Crect x='2.8' y='1.8' width='18.4' height='8' rx='1'/%3E%3Cpath d='M12 9.8v6.4'/%3E%3Cpath d='M7.6 16.2h8.8L12 22.4z' fill='%234fb3e8' stroke='none'/%3E%3C/svg%3E");
 }
 
 .secao--escura .secao__titulo::after {
@@ -412,17 +528,54 @@ a {
   padding: 0 var(--respiro-lateral);
 }
 
-/* marca acima do titulo: um no, o conector descendo e a seta cheia.
-   E o mesmo desenho do fluxograma, reduzido a um icone */
-.secao__titulo::before {
+/* rotulo de fase acima de cada titulo: e o numero da secao dentro do mapa.
+   A marca a esquerda e o mesmo no + conector + seta cheia do fluxograma,
+   reduzido a um icone */
+.fase {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  font-family: var(--fonte-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--cor-azul-curso);
+}
+
+.fase::before {
   content: "";
-  display: block;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-bottom: 0.65rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23136795' stroke-width='1.6'%3E%3Crect x='2.8' y='1.8' width='18.4' height='8' rx='1'/%3E%3Cpath d='M12 9.8v6.4'/%3E%3Cpath d='M7.6 16.2h8.8L12 22.4z' fill='%23136795' stroke='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.fase strong {
+  font-size: 1.05rem;
+  letter-spacing: 0;
+}
+
+.fase__total {
+  color: var(--cor-texto-suave);
+}
+
+/* sobre a tinta a marca e o texto trocam para o azul claro, que e a cor
+   de conexao do kit no fundo escuro */
+.secao--escura .fase,
+.secao--inicio .fase {
+  color: var(--cor-azul-claro);
+}
+
+.secao--escura .fase::before,
+.secao--inicio .fase::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234fb3e8' stroke-width='1.6'%3E%3Crect x='2.8' y='1.8' width='18.4' height='8' rx='1'/%3E%3Cpath d='M12 9.8v6.4'/%3E%3Cpath d='M7.6 16.2h8.8L12 22.4z' fill='%234fb3e8' stroke='none'/%3E%3C/svg%3E");
+}
+
+.secao--escura .fase__total,
+.secao--inicio .fase__total {
+  color: var(--cor-texto-claro-suave);
 }
 
 .secao__titulo {
@@ -733,6 +886,85 @@ a {
   transform: translateX(3px);
 }
 
+
+/* ---------------------------------------------------------------
+   6b. Texto guardado atras de um botao
+   Quem so quer a ideia principal le o primeiro paragrafo e segue. Quem
+   quer o detalhe abre. O botao usa a mesma seta arredondada do resto.
+   --------------------------------------------------------------- */
+.mais {
+  margin: 0 0 1.25rem;
+}
+
+.mais__gatilho {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.4rem 1.1rem;
+  border: 1px solid var(--cor-azul-curso);
+  border-radius: var(--raio);
+  background: var(--cor-branco);
+  font-family: var(--fonte-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cor-azul-curso);
+  cursor: pointer;
+  list-style: none;
+  transition: transform var(--transicao), background-color var(--transicao),
+    color var(--transicao);
+}
+
+.mais__gatilho::-webkit-details-marker {
+  display: none;
+}
+
+.mais__gatilho::after {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask: var(--seta-baixo) center / contain no-repeat;
+  mask: var(--seta-baixo) center / contain no-repeat;
+  transition: transform var(--transicao);
+}
+
+.mais__gatilho:hover {
+  transform: translateY(-2px);
+  background: var(--cor-azul-curso);
+  color: var(--cor-branco);
+}
+
+.mais[open] .mais__gatilho::after {
+  transform: rotate(180deg);
+}
+
+.mais__texto {
+  margin-top: 1.2rem;
+}
+
+/* placar das fases do curso: conta quantos semestres a pessoa abriu */
+.placar {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-branco);
+  font-family: var(--fonte-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  color: var(--cor-texto-suave);
+}
+
+.placar strong {
+  font-size: 1.2rem;
+  color: var(--cor-azul-curso);
+}
+
 /* ---------------------------------------------------------------
    7. Cartoes (nos do fluxograma)
    --------------------------------------------------------------- */
@@ -906,6 +1138,90 @@ a {
   width: 0.45rem;
   height: 0.45rem;
   background: var(--cor-azul-curso);
+}
+
+
+/* os nove semestres viram um caminho de nove fases: cada item e um no
+   solto, ligado ao proximo por um conector com seta cheia, e o numero
+   fica num cracha que pula quando a fase abre */
+.acordeao--fases {
+  counter-reset: fase;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: none;
+}
+
+.acordeao--fases .acordeao__item {
+  position: relative;
+  counter-increment: fase;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-branco);
+}
+
+.acordeao--fases .acordeao__item + .acordeao__item {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.acordeao--fases .acordeao__item + .acordeao__item::before {
+  content: "";
+  position: absolute;
+  left: 2.1rem;
+  top: -2.5rem;
+  width: 1px;
+  height: 1.55rem;
+  background: var(--cor-azul-curso);
+}
+
+.acordeao--fases .acordeao__item + .acordeao__item::after {
+  content: "";
+  position: absolute;
+  left: 2.1rem;
+  top: -1.05rem;
+  transform: translateX(-50%);
+  width: 0.85rem;
+  height: 0.85rem;
+  background-color: var(--cor-azul-curso);
+  -webkit-mask: var(--seta-cheia-baixo) center / contain no-repeat;
+  mask: var(--seta-cheia-baixo) center / contain no-repeat;
+}
+
+.acordeao--fases .acordeao__gatilho {
+  justify-content: flex-start;
+  gap: 0.85rem;
+  border-left: 0;
+}
+
+.acordeao--fases .acordeao__gatilho::before {
+  content: counter(fase, decimal-leading-zero);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--cor-azul-curso);
+  border-radius: var(--raio);
+  background: var(--cor-fundo-alternado);
+  font-size: 0.82rem;
+  transition: background-color var(--transicao), color var(--transicao),
+    transform var(--transicao);
+}
+
+.acordeao--fases .acordeao__gatilho:hover::before {
+  transform: translateY(-3px);
+}
+
+.acordeao--fases .acordeao__gatilho[aria-expanded="true"]::before {
+  background: var(--cor-azul-curso);
+  color: var(--cor-branco);
+  animation: pulo-do-no 380ms ease;
+}
+
+.acordeao--fases .acordeao__seta {
+  margin-left: auto;
 }
 
 /* ---------------------------------------------------------------
@@ -1189,6 +1505,9 @@ a {
   .cartao:hover,
   .rede:hover,
   .link-destaque:hover,
+  .trilha__no:hover,
+  .mais__gatilho:hover,
+  .acordeao--fases .acordeao__gatilho:hover::before,
   .botao--primario:hover::after {
     transform: none;
   }
@@ -1232,8 +1551,15 @@ a {
   .inicio__dados li,
   .video,
   .rede__icone,
-  .fluxo__no {
+  .fluxo__no,
+  .trilha__no,
+  .placar,
+  .mais__gatilho {
     border: 1px solid CanvasText;
+  }
+
+  .trilha__item.esta-atual .trilha__no {
+    outline: 2px solid LinkText;
   }
 
   .navegacao__link.esta-ativo {

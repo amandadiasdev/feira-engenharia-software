@@ -74,6 +74,29 @@ esse código.
 Abra a pasta e dê dois cliques em `index.html`. O navegador mostra o site. O vídeo do YouTube
 só aparece com internet.
 
+## O site como mapa de fases
+
+O público da feira é jovem e não lê texto longo. Por isso a página é montada como um mapa de
+jogo, mas sem trocar a identidade: os nós, os conectores e as setas continuam sendo os do
+BrandKit.
+
+- **Trilha no topo** (`.trilha`): oito nós, um por seção. O quadradinho à esquerda do número
+  mostra o estado. Vazio é fase ainda não visitada, cheio é fase já concluída, e a fase atual
+  fica em âmbar, que no kit significa "o caminho escolhido". No celular a trilha rola de lado.
+- **Rótulo de fase** (`.fase`): cada seção diz em que ponto do mapa você está, por exemplo
+  `fase 03 / 08`.
+- **Os nove semestres são nove fases** (`.acordeao--fases`): cada semestre é um nó com o número
+  num crachá, ligado ao próximo por um conector com seta cheia. Abrir uma fase pinta o crachá e
+  faz ele dar um pulo.
+- **Placar** (`.placar`): conta quantos semestres foram abertos. É só incentivo visual, nenhuma
+  fase fica bloqueada de verdade.
+- **Texto guardado** (`<details class="mais">`): o parágrafo mais longo fica atrás de um botão,
+  para quem quiser se aprofundar.
+
+O progresso é calculado em `js/principal.js`, medindo qual seção ocupa o meio da tela. Medir a
+posição direto funciona subindo, descendo e em salto de âncora. Todas as animações somem para
+quem liga `prefers-reduced-motion` no sistema.
+
 ## Identidade visual
 
 O site segue o BrandKit da Feira das Profissões (rota A, fluxograma). A identidade é um

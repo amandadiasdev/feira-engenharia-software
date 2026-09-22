@@ -1,5 +1,8 @@
 <!-- index.html: pagina unica do site de divulgacao do curso de Engenharia de Software
-     da Unipampa, campus Alegrete, feito para a feira de profissoes. -->
+     da Unipampa, campus Alegrete, feito para a feira de profissoes.
+     A pagina e montada como um mapa de jogo: cada secao e uma fase, a trilha
+     no topo mostra onde a pessoa esta, e os textos longos ficam guardados
+     atras de um botao "ler mais" para quem quiser se aprofundar. -->
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -17,7 +20,7 @@
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/estilos.css?v=5" />
+    <link rel="stylesheet" href="css/estilos.css?v=6" />
   </head>
 
   <body>
@@ -58,12 +61,76 @@
           <li><a class="navegacao__link" href="#contato">Contato</a></li>
         </ul>
       </nav>
+
+      <!-- trilha de fases: o mapa do jogo, que tambem serve de barra de
+           progresso. Rola de lado no celular. -->
+      <nav class="trilha-caixa" aria-label="Mapa das fases">
+        <ol class="trilha" id="trilha">
+          <li class="trilha__item" data-fase="1">
+            <a class="trilha__no" href="#inicio">
+              <span class="trilha__marca" aria-hidden="true"></span>
+              <span class="trilha__num">01</span>
+              <span class="trilha__nome">Início</span>
+            </a>
+          </li>
+          <li class="trilha__item" data-fase="2">
+            <a class="trilha__no" href="#o-que-e">
+              <span class="trilha__marca" aria-hidden="true"></span>
+              <span class="trilha__num">02</span>
+              <span class="trilha__nome">O que é</span>
+            </a>
+          </li>
+          <li class="trilha__item" data-fase="3">
+            <a class="trilha__no" href="#curso">
+              <span class="trilha__marca" aria-hidden="true"></span>
+              <span class="trilha__num">03</span>
+              <span class="trilha__nome">O curso</span>
+            </a>
+          </li>
+          <li class="trilha__item" data-fase="4">
+            <a class="trilha__no" href="#projetos">
+              <span class="trilha__marca" aria-hidden="true"></span>
+              <span class="trilha__num">04</span>
+              <span class="trilha__nome">Projetos</span>
+            </a>
+          </li>
+          <li class="trilha__item" data-fase="5">
+            <a class="trilha__no" href="#carreiras">
+              <span class="trilha__marca" aria-hidden="true"></span>
+              <span class="trilha__num">05</span>
+              <span class="trilha__nome">Carreiras</span>
+            </a>
+          </li>
+          <li class="trilha__item" data-fase="6">
+            <a class="trilha__no" href="#ingresso">
+              <span class="trilha__marca" aria-hidden="true"></span>
+              <span class="trilha__num">06</span>
+              <span class="trilha__nome">Como entrar</span>
+            </a>
+          </li>
+          <li class="trilha__item" data-fase="7">
+            <a class="trilha__no" href="#videos">
+              <span class="trilha__marca" aria-hidden="true"></span>
+              <span class="trilha__num">07</span>
+              <span class="trilha__nome">Vídeos</span>
+            </a>
+          </li>
+          <li class="trilha__item" data-fase="8">
+            <a class="trilha__no" href="#contato">
+              <span class="trilha__marca" aria-hidden="true"></span>
+              <span class="trilha__num">08</span>
+              <span class="trilha__nome">Contato</span>
+            </a>
+          </li>
+        </ol>
+      </nav>
     </header>
 
     <main id="conteudo">
       <!-- 1. Inicio -->
       <section class="secao secao--inicio" id="inicio">
         <div class="secao__interno inicio">
+          <p class="fase"><span class="fase__rotulo">fase</span> <strong>01</strong> <span class="fase__total">/ 08</span></p>
           <h1 class="inicio__titulo">
             Quem constrói os aplicativos e jogos<br class="quebra-tela-larga" />
             que você usa todo dia?
@@ -81,7 +148,7 @@
             </ul>
           </div>
 
-          <a class="botao botao--primario" href="#o-que-e">Conheça o curso</a>
+          <a class="botao botao--primario" href="#o-que-e">Começar a fase 02</a>
 
           <ul class="inicio__dados">
             <li><strong>Bacharelado</strong><span>grau conferido</span></li>
@@ -95,6 +162,7 @@
       <!-- 2. O que e Engenharia de Software -->
       <section class="secao" id="o-que-e">
         <div class="secao__interno">
+          <p class="fase"><span class="fase__rotulo">fase</span> <strong>02</strong> <span class="fase__total">/ 08</span></p>
           <h2 class="secao__titulo">O que é Engenharia de Software</h2>
 
           <p class="secao__texto">
@@ -104,13 +172,16 @@
             computador.</strong>
           </p>
 
-          <p class="secao__texto">
-            Um aplicativo de banco, um jogo ou o sistema de um hospital não nascem de uma pessoa
-            digitando código sozinha até dar certo. Eles nascem de uma equipe que entende o
-            problema, combina como a solução vai funcionar, escreve o programa em partes, testa
-            cada parte e corrige o que falha. Quando um desses passos é pulado, o programa trava,
-            perde dados ou deixa alguém sem atendimento.
-          </p>
+          <details class="mais">
+            <summary class="mais__gatilho">Ver como isso funciona na prática</summary>
+            <p class="secao__texto mais__texto">
+              Um aplicativo de banco, um jogo ou o sistema de um hospital não nascem de uma pessoa
+              digitando código sozinha até dar certo. Eles nascem de uma equipe que entende o
+              problema, combina como a solução vai funcionar, escreve o programa em partes, testa
+              cada parte e corrige o que falha. Quando um desses passos é pulado, o programa trava,
+              perde dados ou deixa alguém sem atendimento.
+            </p>
+          </details>
 
           <ul class="cartoes cartoes--tres" role="list">
             <li class="cartao animar">
@@ -146,15 +217,22 @@
       <!-- 3. Como e o curso -->
       <section class="secao secao--alternada" id="curso">
         <div class="secao__interno">
+          <p class="fase"><span class="fase__rotulo">fase</span> <strong>03</strong> <span class="fase__total">/ 08</span></p>
           <h2 class="secao__titulo">Como é o curso</h2>
           <p class="secao__texto">
             O curso é presencial, noturno, tem 9 semestres e 3.300 horas no total. A cada semestre
             você cursa disciplinas de quatro eixos: fundamentos da matemática, fundamentos da
-            computação, engenharia de software e contexto profissional. Toque em um semestre para
-            ver as disciplinas.
+            computação, engenharia de software e contexto profissional. Cada semestre é uma fase:
+            toque para abrir as disciplinas.
           </p>
 
-          <div class="acordeao">
+          <p class="placar">
+            <span class="placar__rotulo">fases abertas</span>
+            <strong id="placar-valor">00</strong>
+            <span class="placar__total">/ 09</span>
+          </p>
+
+          <div class="acordeao acordeao--fases">
             <article class="acordeao__item">
               <h3>
                 <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-1">
@@ -320,6 +398,7 @@
       <!-- 4. Projetos -->
       <section class="secao" id="projetos">
         <div class="secao__interno">
+          <p class="fase"><span class="fase__rotulo">fase</span> <strong>04</strong> <span class="fase__total">/ 08</span></p>
           <h2 class="secao__titulo">Projetos</h2>
           <p class="secao__texto">
             Estudantes e professores do curso levam software para fora da sala de aula. Estes são
@@ -381,6 +460,7 @@
       <!-- 5. Carreiras -->
       <section class="secao secao--escura" id="carreiras">
         <div class="secao__interno">
+          <p class="fase"><span class="fase__rotulo">fase</span> <strong>05</strong> <span class="fase__total">/ 08</span></p>
           <h2 class="secao__titulo">Carreiras</h2>
           <p class="secao__texto">
             Quem se forma em Engenharia de Software não fica preso a um único tipo de trabalho. O
@@ -436,6 +516,7 @@
       <!-- 6. Como entrar no curso -->
       <section class="secao secao--alternada" id="ingresso">
         <div class="secao__interno">
+          <p class="fase"><span class="fase__rotulo">fase</span> <strong>06</strong> <span class="fase__total">/ 08</span></p>
           <h2 class="secao__titulo">Como entrar no curso</h2>
           <p class="secao__texto">
             São 50 vagas por ano, no turno da noite. A porta principal é a nota do Exame Nacional
@@ -575,6 +656,7 @@
       <!-- 7. Videos -->
       <section class="secao secao--escura" id="videos">
         <div class="secao__interno">
+          <p class="fase"><span class="fase__rotulo">fase</span> <strong>07</strong> <span class="fase__total">/ 08</span></p>
           <h2 class="secao__titulo">Vídeos</h2>
           <p class="secao__texto">Veja e ouça quem já está no curso.</p>
 
@@ -615,6 +697,7 @@
       <!-- 8. Contato e redes sociais -->
       <section class="secao" id="contato">
         <div class="secao__interno">
+          <p class="fase"><span class="fase__rotulo">fase</span> <strong>08</strong> <span class="fase__total">/ 08</span></p>
           <h2 class="secao__titulo">Contato e redes sociais</h2>
           <p class="secao__texto">
             Ficou com dúvida? Fale com o curso ou acompanhe o dia a dia pelas redes.
@@ -732,6 +815,6 @@
       </div>
     </footer>
 
-    <script src="js/principal.js?v=5"></script>
+    <script src="js/principal.js?v=6"></script>
   </body>
 </html>
