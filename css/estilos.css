@@ -314,7 +314,51 @@ a {
   color: var(--cor-texto-claro-suave);
 }
 
-.secao--escura .secao__nota {
+.secao--escura /* subtitulo dentro de uma secao, um degrau abaixo do titulo principal */
+.secao__subtitulo {
+  margin: 2.75rem 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cor-texto);
+}
+
+.secao--escura .secao__subtitulo {
+  color: var(--cor-branco);
+}
+
+/* lista de itens explicados, com marcador quadrado igual ao do acordeao */
+.lista-simples {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  max-width: 62ch;
+}
+
+.lista-simples li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.7rem;
+}
+
+.lista-simples li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.62rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  background: var(--cor-laranja);
+}
+
+.lista-simples strong {
+  color: var(--cor-azul-curso);
+}
+
+.secao--escura .lista-simples strong {
+  color: var(--cor-azul-claro);
+}
+
+.secao__nota {
   color: #93a7ba;
 }
 
