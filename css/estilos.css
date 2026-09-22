@@ -43,7 +43,6 @@
   --espaco-secao: 4rem;
   --raio: 0.5rem;
   --raio-pequeno: 0.35rem;
-  --barra-janela: 1.9rem;
   --sombra: 0 1px 2px rgba(11, 17, 23, 0.06);
   --sombra-forte: 0 10px 24px rgba(11, 17, 23, 0.14);
   --altura-cabecalho: 3.75rem;
@@ -577,30 +576,10 @@ a {
   background: var(--cor-branco);
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
-  padding: calc(var(--barra-janela) + 1.2rem) 1.25rem 1.35rem;
+  padding: 1.35rem 1.25rem;
   box-shadow: var(--sombra);
   transition: transform var(--transicao), border-color var(--transicao),
     box-shadow var(--transicao);
-}
-
-/* barra de janela com os tres pontinhos, como um programa aberto */
-.cartao::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--barra-janela);
-  background-color: var(--cor-fundo-alternado);
-  border-bottom: 1px solid var(--cor-borda);
-  border-radius: calc(var(--raio) - 1px) calc(var(--raio) - 1px) 0 0;
-  background-image: radial-gradient(
-      circle at 15px 50%,
-      var(--cor-azul-curso) 3.5px,
-      transparent 3.6px
-    ),
-    radial-gradient(circle at 29px 50%, #6f9db8 3.5px, transparent 3.6px),
-    radial-gradient(circle at 43px 50%, var(--cor-borda) 3.5px, transparent 3.6px);
 }
 
 .cartao:hover {
@@ -648,18 +627,6 @@ a {
   background: var(--cor-tinta-2);
   border-color: var(--cor-linha);
   box-shadow: none;
-}
-
-.secao--escura .cartao::before {
-  background-color: #0e1620;
-  border-bottom-color: var(--cor-linha);
-  background-image: radial-gradient(
-      circle at 15px 50%,
-      var(--cor-azul-claro) 3.5px,
-      transparent 3.6px
-    ),
-    radial-gradient(circle at 29px 50%, #40617a 3.5px, transparent 3.6px),
-    radial-gradient(circle at 43px 50%, var(--cor-linha) 3.5px, transparent 3.6px);
 }
 
 .secao--escura .cartao:hover {
@@ -791,38 +758,19 @@ a {
   width: 100%;
   aspect-ratio: 16 / 9;
   margin: 1.5rem 0;
-  padding: var(--barra-janela) 1px 1px;
+  padding: 1px;
   background-color: var(--cor-tinta);
   border: 1px solid var(--cor-linha);
   border-radius: var(--raio);
-  background-image: radial-gradient(
-      circle at 15px calc(var(--barra-janela) / 2),
-      var(--cor-azul-claro) 3.5px,
-      transparent 3.6px
-    ),
-    radial-gradient(
-      circle at 29px calc(var(--barra-janela) / 2),
-      #40617a 3.5px,
-      transparent 3.6px
-    ),
-    radial-gradient(
-      circle at 43px calc(var(--barra-janela) / 2),
-      var(--cor-linha) 3.5px,
-      transparent 3.6px
-    );
-  background-repeat: no-repeat;
 }
 
 .video iframe {
   position: absolute;
-  left: 1px;
-  right: 1px;
-  bottom: 1px;
-  top: var(--barra-janela);
+  inset: 1px;
   width: calc(100% - 2px);
-  height: calc(100% - var(--barra-janela) - 1px);
+  height: calc(100% - 2px);
   border: 0;
-  border-radius: 0 0 calc(var(--raio) - 1px) calc(var(--raio) - 1px);
+  border-radius: calc(var(--raio) - 1px);
   background: #000000;
 }
 
@@ -1034,7 +982,7 @@ a {
 
 @media (min-width: 64rem) {
   .cartao {
-    padding: calc(var(--barra-janela) + 1.4rem) 1.5rem 1.6rem;
+    padding: 1.6rem 1.5rem;
   }
 }
 
