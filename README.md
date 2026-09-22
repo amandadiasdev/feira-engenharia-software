@@ -70,8 +70,27 @@ esse código.
 Abra a pasta e dê dois cliques em `index.html`. O navegador mostra o site. O vídeo do YouTube
 só aparece com internet.
 
+## Identidade visual
+
+O site segue o BrandKit da Feira das Profissões (rota A, azuis oficiais mais âmbar). As cores
+estão no topo de `css/estilos.css` e não devem ser trocadas uma a uma:
+
+| Cor                                     | Onde entra                                            |
+| --------------------------------------- | ----------------------------------------------------- |
+| `#0B1117` tinta                         | fundo escuro principal                                |
+| `#051A66` marinho DAES                  | rodapé e faixas institucionais                        |
+| `#136795` azul do curso                 | títulos, links e botões sobre fundo claro             |
+| `#4FB3E8` azul claro                    | detalhes e rótulos sobre fundo escuro                 |
+| `#FFB703` âmbar                         | botão principal, item de menu ativo, barra de leitura |
+| `#FB8500` laranja                       | barras e blocos de apoio                              |
+| `#FFFFFF` `#F1F5F9` `#CFD9E3` `#16202B` | papel, fundo alternado, bordas e texto                |
+
+Regras que vêm do kit: o âmbar ocupa no máximo 10% da página, nada de degradê ou brilho, e as
+logos não aparecem no topo, só pequenas no rodapé. A fonte é Inter.
+
 ## Origem das informações
 
 - Disciplinas, duração, turno, vagas, áreas de atuação e projetos de extensão: Projeto
   Pedagógico do Curso de Bacharelado em Engenharia de Software, versão 18.4.4, abril de 2025.
-- Cores e logos: arquivos oficiais de logo do curso, do DAES e da Unipampa.
+- Cores, tipografia e regras de uso: BrandKit da Feira das Profissões, no Figma.
+- Logos: arquivos oficiais do curso, do DAES e da Unipampa.

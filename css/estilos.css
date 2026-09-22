@@ -17,10 +17,12 @@
    --------------------------------------------------------------- */
 :root {
   --cor-azul-curso: #136795;
-  --cor-azul-curso-escuro: #0f5175;
+  --cor-azul-curso-escuro: #0f5175; /* usado so em hover */
   --cor-azul-claro: #4fb3e8;
   --cor-azul-marinho: #051a66;
   --cor-azul-marinho-claro: #0a2a8f;
+  --cor-ambar: #ffb703;
+  --cor-laranja: #fb8500;
 
   --cor-tinta: #0b1117;
   --cor-tinta-2: #121a24;
@@ -35,7 +37,7 @@
   --cor-fundo-alternado: #f1f5f9;
   --cor-borda: #cfd9e3;
 
-  --fonte-texto: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-texto: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   --largura-maxima: 72rem;
   --espaco-secao: 4rem;
@@ -144,7 +146,7 @@ a {
   width: 100%;
   transform: scaleX(0);
   transform-origin: 0 50%;
-  background: var(--cor-azul-claro);
+  background: var(--cor-ambar);
   animation: progresso-da-rolagem linear;
   animation-timeline: scroll(root);
 }
@@ -174,11 +176,6 @@ a {
   text-decoration: none;
   font-weight: 700;
   font-size: 0.9rem;
-}
-
-.navegacao__marca img {
-  width: 1.9rem;
-  height: auto;
 }
 
 .navegacao__botao {
@@ -270,9 +267,9 @@ a {
 }
 
 .navegacao__link.esta-ativo {
-  color: var(--cor-azul-claro);
+  color: var(--cor-branco);
   background: var(--cor-tinta-2);
-  border-left-color: var(--cor-azul-claro);
+  border-left-color: var(--cor-ambar);
 }
 
 /* ---------------------------------------------------------------
@@ -308,7 +305,7 @@ a {
 }
 
 .secao--escura .secao__titulo::after {
-  background: var(--cor-azul-claro);
+  background: var(--cor-ambar);
 }
 
 .secao--escura .secao__texto {
@@ -340,7 +337,7 @@ a {
 
 .secao__titulo {
   font-size: clamp(1.7rem, 5.8vw, 2.25rem);
-  color: var(--cor-azul-curso-escuro);
+  color: var(--cor-azul-curso);
 }
 
 .secao__titulo::after {
@@ -349,7 +346,7 @@ a {
   width: 2.5rem;
   height: 3px;
   margin-top: 0.7rem;
-  background: var(--cor-azul-curso);
+  background: var(--cor-laranja);
 }
 
 .secao__texto {
@@ -412,19 +409,19 @@ a {
   text-align: center;
 }
 
-/* a logo aparece no topo so como marca, na versao vazada, que foi
-   desenhada para fundos escuros. As versoes coloridas ficam no rodape */
-.inicio__logo {
-  width: min(96px, 28%);
-  height: auto;
-  margin-bottom: 1.4rem;
+.inicio__titulo {
+  font-size: clamp(1.9rem, 7.1vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  /* distribui as palavras entre as linhas em vez de deixar uma sozinha */
+  text-wrap: balance;
+  color: var(--cor-branco);
 }
 
-.inicio__titulo {
-  font-size: clamp(1.9rem, 7.6vw, 3.1rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--cor-branco);
+/* quebra de linha da frase de impacto: so vale em tela larga. No celular
+   o texto quebra sozinho, entao a marca fica escondida */
+.quebra-tela-larga {
+  display: none;
 }
 
 .inicio__frase {
@@ -486,9 +483,9 @@ a {
 }
 
 .botao--primario {
-  background: var(--cor-azul-marinho);
-  color: var(--cor-branco);
-  border: 1px solid var(--cor-azul-marinho-claro);
+  background: var(--cor-ambar);
+  color: var(--cor-tinta);
+  border: 1px solid var(--cor-ambar);
 }
 
 /* seta desenhada com bordas, que anda para a direita no hover */
@@ -503,7 +500,8 @@ a {
 }
 
 .botao--primario:hover {
-  background: var(--cor-azul-marinho-claro);
+  background: var(--cor-laranja);
+  border-color: var(--cor-laranja);
 }
 
 .botao--primario:hover::after {
@@ -514,7 +512,7 @@ a {
   display: inline-flex;
   align-items: center;
   min-height: 48px;
-  color: var(--cor-azul-marinho);
+  color: var(--cor-azul-curso);
   font-weight: 700;
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -561,8 +559,9 @@ a {
 }
 
 .cartao__titulo {
-  font-size: 1.15rem;
-  color: var(--cor-azul-curso-escuro);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cor-azul-curso);
 }
 
 .cartao__imagem {
@@ -632,7 +631,7 @@ a {
   border-left: 3px solid transparent;
   font-size: 1rem;
   font-weight: 700;
-  color: var(--cor-azul-curso-escuro);
+  color: var(--cor-azul-curso);
   text-align: left;
   cursor: pointer;
   transition: background-color var(--transicao), border-color var(--transicao);
@@ -800,11 +799,11 @@ a {
    --------------------------------------------------------------- */
 .rodape {
   position: relative;
-  background: var(--cor-tinta);
+  background: var(--cor-azul-marinho);
   background-image: var(--guias-escuras);
   color: var(--cor-texto-claro);
   padding: 2.75rem 0 2.5rem;
-  border-top: 2px solid var(--cor-azul-curso);
+  border-top: 3px solid var(--cor-ambar);
 }
 
 .rodape__interno {
@@ -905,7 +904,7 @@ a {
 
   .navegacao__link.esta-ativo {
     background: transparent;
-    border-bottom-color: var(--cor-azul-claro);
+    border-bottom-color: var(--cor-ambar);
   }
 
   .secao--inicio {
