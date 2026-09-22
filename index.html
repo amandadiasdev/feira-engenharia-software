@@ -1,8 +1,9 @@
 <!-- index.html: pagina unica do site de divulgacao do curso de Engenharia de Software
      da Unipampa, campus Alegrete, feito para a feira de profissoes.
-     A pagina e montada como um mapa de jogo: cada secao e uma fase, a trilha
-     no topo mostra onde a pessoa esta, e os textos longos ficam guardados
-     atras de um botao "ler mais" para quem quiser se aprofundar. -->
+     A pagina e montada como um mapa de jogo: cada secao e uma fase, e a
+     trilha no topo e ao mesmo tempo o menu, o mapa e a barra de progresso.
+     Os textos longos ficam guardados atras de um botao "ler mais" para quem
+     quiser se aprofundar. -->
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -20,14 +21,14 @@
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/estilos.css?v=6" />
+    <link rel="stylesheet" href="css/estilos.css?v=7" />
   </head>
 
   <body>
     <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="cabecalho">
-      <nav class="navegacao" aria-label="Navegação principal">
+      <div class="navegacao">
         <a class="navegacao__marca" href="#inicio">
           <img
             class="navegacao__simbolo"
@@ -38,33 +39,11 @@
           />
           <span>Engenharia de Software</span>
         </a>
-
-        <button
-          class="navegacao__botao"
-          id="botao-menu"
-          type="button"
-          aria-expanded="false"
-          aria-controls="menu"
-        >
-          <span class="navegacao__botao-barras" aria-hidden="true"></span>
-          <span class="navegacao__botao-texto">Menu</span>
-        </button>
-
-        <ul class="navegacao__lista" id="menu">
-          <li><a class="navegacao__link" href="#inicio">Início</a></li>
-          <li><a class="navegacao__link" href="#o-que-e">O que é</a></li>
-          <li><a class="navegacao__link" href="#curso">Como é o curso</a></li>
-          <li><a class="navegacao__link" href="#projetos">Projetos</a></li>
-          <li><a class="navegacao__link" href="#carreiras">Carreiras</a></li>
-          <li><a class="navegacao__link" href="#ingresso">Como entrar</a></li>
-          <li><a class="navegacao__link" href="#videos">Vídeos</a></li>
-          <li><a class="navegacao__link" href="#contato">Contato</a></li>
-        </ul>
-      </nav>
+      </div>
 
       <!-- trilha de fases: o mapa do jogo, que tambem serve de barra de
            progresso. Rola de lado no celular. -->
-      <nav class="trilha-caixa" aria-label="Mapa das fases">
+      <nav class="trilha-caixa" aria-label="Mapa das fases: cada fase e uma secao da pagina">
         <ol class="trilha" id="trilha">
           <li class="trilha__item" data-fase="1">
             <a class="trilha__no" href="#inicio">
@@ -815,6 +794,6 @@
       </div>
     </footer>
 
-    <script src="js/principal.js?v=6"></script>
+    <script src="js/principal.js?v=7"></script>
   </body>
 </html>

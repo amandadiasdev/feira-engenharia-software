@@ -65,8 +65,8 @@
   /* o kit limita o canto do no a 4px, e nada no site arredonda mais que isso */
   --raio: 4px;
   --raio-pequeno: 4px;
-  --altura-cabecalho: 3.75rem;
-  --altura-trilha: 3.05rem;
+  --altura-cabecalho: 3rem;
+  --altura-trilha: 3.65rem;
   --transicao: 160ms ease;
 
   /* papel quadriculado de rascunho: linha de 1px a cada 48px, 4.5% de
@@ -165,7 +165,8 @@ a {
 }
 
 /* ---------------------------------------------------------------
-   3. Cabecalho e navegacao (barra de ferramentas do editor)
+   3. Cabecalho
+   Sobrou so a marca: quem navega e a trilha de fases logo abaixo.
    --------------------------------------------------------------- */
 .cabecalho {
   position: sticky;
@@ -202,9 +203,7 @@ a {
   margin: 0 auto;
   padding: 0 var(--respiro-lateral);
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
   min-height: var(--altura-cabecalho);
 }
 
@@ -227,102 +226,6 @@ a {
   width: auto;
   height: 1.5rem;
 }
-
-.navegacao__botao {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  min-height: 44px;
-  padding: 0 0.9rem;
-  background: var(--cor-tinta-2);
-  color: var(--cor-texto-claro);
-  border: 1px solid var(--cor-linha);
-  border-radius: var(--raio-pequeno);
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: border-color var(--transicao), color var(--transicao);
-}
-
-.navegacao__botao:hover {
-  border-color: var(--cor-ambar);
-  color: var(--cor-branco);
-}
-
-.navegacao__botao-barras,
-.navegacao__botao-barras::before,
-.navegacao__botao-barras::after {
-  display: block;
-  width: 1.1rem;
-  height: 2px;
-  background: currentColor;
-  content: "";
-  transition: transform var(--transicao);
-}
-
-.navegacao__botao-barras {
-  position: relative;
-}
-
-.navegacao__botao-barras::before {
-  position: absolute;
-  top: -6px;
-}
-
-.navegacao__botao-barras::after {
-  position: absolute;
-  top: 6px;
-}
-
-.navegacao__botao[aria-expanded="true"] .navegacao__botao-barras {
-  background: transparent;
-}
-
-.navegacao__botao[aria-expanded="true"] .navegacao__botao-barras::before {
-  transform: translateY(6px) rotate(45deg);
-}
-
-.navegacao__botao[aria-expanded="true"] .navegacao__botao-barras::after {
-  transform: translateY(-6px) rotate(-45deg);
-}
-
-.navegacao__lista {
-  list-style: none;
-  margin: 0;
-  padding: 0.4rem 0 0.6rem;
-  width: 100%;
-  display: none;
-  border-top: 1px solid var(--cor-linha);
-}
-
-.navegacao__lista.esta-aberto {
-  display: block;
-}
-
-.navegacao__link {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0.25rem 0.6rem;
-  border-left: 3px solid transparent;
-  color: var(--cor-texto-claro);
-  font-family: var(--fonte-mono);
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: color var(--transicao), background-color var(--transicao),
-    border-color var(--transicao);
-}
-
-.navegacao__link:hover {
-  background: var(--cor-tinta-2);
-  color: var(--cor-branco);
-}
-
-.navegacao__link.esta-ativo {
-  color: var(--cor-branco);
-  background: var(--cor-tinta-2);
-  border-left-color: var(--cor-ambar);
-}
-
 
 /* ---------------------------------------------------------------
    3b. Trilha de fases
@@ -373,8 +276,10 @@ a {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  min-height: 2.5rem;
-  padding: 0 0.7rem;
+  /* 44px e o alvo de toque minimo recomendado, e agora a trilha e a
+     unica navegacao da pagina */
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
   border: 1px solid var(--cor-linha);
   border-radius: var(--raio);
   background: var(--cor-tinta);
@@ -1401,32 +1306,6 @@ a {
     --respiro-lateral: 2.25rem;
   }
 
-  .navegacao__botao {
-    display: none;
-  }
-
-  .navegacao__lista {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 0.1rem;
-    width: auto;
-    padding: 0;
-    border-top: 0;
-  }
-
-  .navegacao__link {
-    padding: 0 0.65rem;
-    font-size: 0.85rem;
-    border-left: 0;
-    border-bottom: 3px solid transparent;
-  }
-
-  .navegacao__link.esta-ativo {
-    background: transparent;
-    border-bottom-color: var(--cor-ambar);
-  }
-
   .secao--inicio {
     padding: 4.5rem 0 5rem;
   }
@@ -1559,10 +1438,6 @@ a {
   }
 
   .trilha__item.esta-atual .trilha__no {
-    outline: 2px solid LinkText;
-  }
-
-  .navegacao__link.esta-ativo {
     outline: 2px solid LinkText;
   }
 

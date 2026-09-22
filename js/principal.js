@@ -1,7 +1,7 @@
 /* principal.js: comportamentos do site do curso de Engenharia de Software.
-   Sao cinco: menu sanfona no celular, progresso das fases (que acende o
-   item de menu e o no da trilha da secao visivel), acordeao das disciplinas,
-   placar de fases abertas e aparecimento suave dos cartoes.
+   Sao quatro: progresso das fases (acende na trilha o no da secao que esta
+   na tela), acordeao das disciplinas, placar de fases abertas e aparecimento
+   suave dos cartoes. A trilha e a unica navegacao da pagina.
    Tudo em JavaScript puro, sem bibliotecas externas. */
 
 (function () {
@@ -10,59 +10,27 @@
   var querMenosMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ----------------------------------------------------------
-     1. Menu sanfona (hamburguer) no celular
-     ---------------------------------------------------------- */
-  function iniciarMenu() {
-    var botao = document.getElementById("botao-menu");
-    var lista = document.getElementById("menu");
-
-    if (!botao || !lista) {
-      return;
-    }
-
-    function fecharMenu() {
-      lista.classList.remove("esta-aberto");
-      botao.setAttribute("aria-expanded", "false");
-    }
-
-    botao.addEventListener("click", function () {
-      var estaAberto = lista.classList.toggle("esta-aberto");
-      botao.setAttribute("aria-expanded", String(estaAberto));
-    });
-
-    lista.addEventListener("click", function (evento) {
-      if (evento.target.closest(".navegacao__link")) {
-        fecharMenu();
-      }
-    });
-
-    document.addEventListener("keydown", function (evento) {
-      if (evento.key !== "Escape" || !lista.classList.contains("esta-aberto")) {
-        return;
-      }
-
-      fecharMenu();
-      botao.focus();
-    });
-  }
-
-  /* ----------------------------------------------------------
-     2. Progresso das fases
-     A secao visivel vira a fase atual: acende no menu e na trilha.
+     1. Progresso das fases
+     A secao visivel vira a fase atual e acende na trilha.
      Toda fase que ficou para tras conta como concluida, e o no da fase
      atual e trazido para o centro da trilha, que rola de lado.
      ---------------------------------------------------------- */
   function iniciarProgressoDasFases() {
-    var links = Array.prototype.slice.call(document.querySelectorAll(".navegacao__link"));
     var itens = Array.prototype.slice.call(document.querySelectorAll(".trilha__item"));
     var trilha = document.getElementById("trilha");
-    var secoes = links
-      .map(function (link) {
-        return document.querySelector(link.getAttribute("href"));
+
+    /* cada fase e um par: o no da trilha e a secao para onde ele aponta.
+       Guardar os dois juntos evita que as duas listas saiam de sincronia
+       se um no apontar para uma secao que nao existe. */
+    var fases = itens
+      .map(function (item) {
+        var no = item.querySelector(".trilha__no");
+        var secao = no && document.querySelector(no.getAttribute("href"));
+        return secao ? { item: item, no: no, secao: secao } : null;
       })
       .filter(Boolean);
 
-    if (!secoes.length) {
+    if (!fases.length) {
       return;
     }
 
@@ -88,8 +56,8 @@
       var escolhido = 0;
       var menorDistancia = Infinity;
 
-      secoes.forEach(function (secao, i) {
-        var caixa = secao.getBoundingClientRect();
+      fases.forEach(function (fase, i) {
+        var caixa = fase.secao.getBoundingClientRect();
         var distancia =
           caixa.top <= meio && caixa.bottom >= meio
             ? 0
@@ -110,38 +78,19 @@
       }
 
       faseAtual = indice;
-      var id = secoes[indice].id;
 
-      links.forEach(function (link) {
-        var estaAtivo = link.getAttribute("href") === "#" + id;
-        link.classList.toggle("esta-ativo", estaAtivo);
-
-        if (estaAtivo) {
-          link.setAttribute("aria-current", "true");
-        } else {
-          link.removeAttribute("aria-current");
-        }
-      });
-
-      itens.forEach(function (item, i) {
-        var no = item.querySelector(".trilha__no");
-        item.classList.toggle("esta-atual", i === indice);
-        item.classList.toggle("esta-concluida", i < indice);
-
-        if (!no) {
-          return;
-        }
+      fases.forEach(function (fase, i) {
+        fase.item.classList.toggle("esta-atual", i === indice);
+        fase.item.classList.toggle("esta-concluida", i < indice);
 
         if (i === indice) {
-          no.setAttribute("aria-current", "true");
+          fase.no.setAttribute("aria-current", "true");
         } else {
-          no.removeAttribute("aria-current");
+          fase.no.removeAttribute("aria-current");
         }
       });
 
-      if (itens[indice]) {
-        centralizarNaTrilha(itens[indice]);
-      }
+      centralizarNaTrilha(fases[indice].item);
     }
 
     /* a leitura roda no maximo uma vez por quadro de animacao, para nao
@@ -166,7 +115,7 @@
   }
 
   /* ----------------------------------------------------------
-     3. Acordeao das disciplinas por semestre
+     2. Acordeao das disciplinas por semestre
      ---------------------------------------------------------- */
   function iniciarAcordeao() {
     var gatilhos = document.querySelectorAll(".acordeao__gatilho");
@@ -188,7 +137,7 @@
   }
 
   /* ----------------------------------------------------------
-     4. Placar das fases do curso
+     3. Placar das fases do curso
      Conta quantos semestres a pessoa ja abriu. E so um incentivo
      visual: nenhuma fase fica bloqueada de verdade.
      ---------------------------------------------------------- */
@@ -207,7 +156,7 @@
   }
 
   /* ----------------------------------------------------------
-     5. Aparecimento suave dos cartoes ao rolar a pagina
+     4. Aparecimento suave dos cartoes ao rolar a pagina
      ---------------------------------------------------------- */
   function iniciarAnimacaoDeEntrada() {
     var elementos = Array.prototype.slice.call(document.querySelectorAll(".animar"));
@@ -241,7 +190,6 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    iniciarMenu();
     iniciarProgressoDasFases();
     iniciarAcordeao();
     atualizarPlacar();

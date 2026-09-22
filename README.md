@@ -8,7 +8,7 @@ JavaScript, então roda direto no GitHub Pages, sem servidor e sem instalação.
 ```
 index.html      todo o texto do site
 css/estilos.css cores, tamanhos e layout
-js/principal.js menu, acordeão e animações
+js/principal.js progresso das fases, acordeão e animações
 assets/         logos, ícones e fotos
 ```
 
@@ -80,9 +80,11 @@ O público da feira é jovem e não lê texto longo. Por isso a página é monta
 jogo, mas sem trocar a identidade: os nós, os conectores e as setas continuam sendo os do
 BrandKit.
 
-- **Trilha no topo** (`.trilha`): oito nós, um por seção. O quadradinho à esquerda do número
-  mostra o estado. Vazio é fase ainda não visitada, cheio é fase já concluída, e a fase atual
-  fica em âmbar, que no kit significa "o caminho escolhido". No celular a trilha rola de lado.
+- **Trilha no topo** (`.trilha`): oito nós, um por seção. É a única navegação da página: faz o
+  papel de menu, de mapa e de barra de progresso ao mesmo tempo. O quadradinho à esquerda do
+  número mostra o estado. Vazio é fase ainda não visitada, cheio é fase já concluída, e a fase
+  atual fica em âmbar, que no kit significa "o caminho escolhido". No celular a trilha rola de
+  lado e se centraliza sozinha na fase atual.
 - **Rótulo de fase** (`.fase`): cada seção diz em que ponto do mapa você está, por exemplo
   `fase 03 / 08`.
 - **Os nove semestres são nove fases** (`.acordeao--fases`): cada semestre é um nó com o número
@@ -103,15 +105,15 @@ O site segue o BrandKit da Feira das Profissões (rota A, fluxograma). A identid
 diagrama de escolha: a feira é o ponto de partida e o curso é o nó para onde o caminho leva.
 As cores estão no topo de `css/estilos.css` e não devem ser trocadas uma a uma:
 
-| Cor                                     | Onde entra                                            |
-| --------------------------------------- | ----------------------------------------------------- |
-| `#0B1117` tinta                         | fundo escuro principal                                |
-| `#051A66` marinho DAES                  | rodapé e faixas institucionais                        |
-| `#136795` azul do curso                 | títulos, links e botões sobre fundo claro             |
-| `#4FB3E8` azul claro                    | rótulos, contorno dos nós e linhas do diagrama        |
-| `#FFB703` âmbar                         | botão principal, item de menu ativo, barra de leitura |
-| `#FB8500` laranja                       | só como forma, nunca como texto                       |
-| `#FFFFFF` `#EAF2F8` `#C9D8E3` `#16202B` | papel, fundo alternado, bordas e texto                |
+| Cor                                     | Onde entra                                              |
+| --------------------------------------- | ------------------------------------------------------- |
+| `#0B1117` tinta                         | fundo escuro principal                                  |
+| `#051A66` marinho DAES                  | rodapé e faixas institucionais                          |
+| `#136795` azul do curso                 | títulos, links e botões sobre fundo claro               |
+| `#4FB3E8` azul claro                    | rótulos, contorno dos nós e linhas do diagrama          |
+| `#FFB703` âmbar                         | botão principal, fase atual na trilha, barra de leitura |
+| `#FB8500` laranja                       | só como forma, nunca como texto                         |
+| `#FFFFFF` `#EAF2F8` `#C9D8E3` `#16202B` | papel, fundo alternado, bordas e texto                  |
 
 Regras que vêm do kit e que o CSS já respeita:
 
