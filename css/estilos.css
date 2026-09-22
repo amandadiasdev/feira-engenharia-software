@@ -614,14 +614,6 @@ a {
   border-color: var(--cor-linha);
 }
 
-.cartao__marcador {
-  margin-top: 0.9rem !important;
-  font-family: var(--fonte-mono);
-  font-size: 0.78rem;
-  line-height: 1.5;
-  color: #5d6b7b !important;
-}
-
 /* cartoes dentro das secoes escuras: mesma janela, tema escuro */
 .secao--escura .cartao {
   background: var(--cor-tinta-2);
@@ -913,6 +905,10 @@ a {
 
 .cartoes .animar:nth-child(5) {
   transition-delay: 280ms;
+}
+
+.cartoes .animar:nth-child(6) {
+  transition-delay: 350ms;
 }
 
 /* ---------------------------------------------------------------

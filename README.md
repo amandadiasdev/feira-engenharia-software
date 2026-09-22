@@ -39,8 +39,8 @@ anônima.
    `</h2>`. **Troque apenas o texto, nunca as marcas com `<` e `>`.**
 4. Clique em **Commit changes**.
 
-Os trechos escritos como `[PREENCHER: alguma coisa]` são avisos de informação que ainda falta.
-Substitua cada um pelo conteúdo real e apague os colchetes.
+Todo o texto que está no site veio do projeto pedagógico do curso. Ao acrescentar informação
+nova, confira a fonte antes de publicar.
 
 ## Como trocar imagens
 
