@@ -355,12 +355,13 @@ a {
 }
 
 .secao__texto--destaque {
+  /* respira longe dos cartoes que vem antes dela */
+  margin-top: 2.5rem;
   font-weight: 600;
-  padding: 0.9rem 1rem;
+  padding: 1.1rem 1.2rem;
   background: var(--cor-fundo-alternado);
   border: 1px solid var(--cor-borda);
-  border-left: 4px solid var(--cor-azul-curso);
-  border-radius: 0 var(--raio-pequeno) var(--raio-pequeno) 0;
+  border-radius: var(--raio-pequeno);
 }
 
 .secao--alternada .secao__texto--destaque {
