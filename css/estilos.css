@@ -574,13 +574,6 @@ a {
   border-radius: var(--raio-pequeno);
 }
 
-/* o simbolo vazado precisa de fundo escuro para aparecer */
-.cartao__imagem[src$=".svg"] {
-  background: var(--cor-tinta);
-  border-color: var(--cor-linha);
-}
-
-/* cartoes dentro das secoes escuras: mesma janela, tema escuro */
 .secao--escura .cartao {
   background: var(--cor-tinta-2);
   border-color: var(--cor-linha);
@@ -810,23 +803,24 @@ a {
   text-align: center;
 }
 
+/* as tres logos ficam juntas, na mesma linha e pequenas: a altura igual
+   para todas e o que faz elas parecerem do mesmo tamanho, porque cada
+   arquivo tem uma proporcao diferente */
 .rodape__logos {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.75rem;
-  margin: 0 auto 1.75rem;
-  max-width: 26rem;
+  flex-wrap: nowrap;
+  gap: 1.1rem;
+  margin: 0 auto 1.5rem;
   background: var(--cor-branco);
-  border: 1px solid var(--cor-linha);
   border-radius: var(--raio);
-  padding: 1.1rem;
+  padding: 0.7rem 1.1rem;
 }
 
 .rodape__logos img {
-  width: 116px;
-  height: auto;
+  width: auto;
+  height: 44px;
 }
 
 .rodape p {
@@ -935,6 +929,10 @@ a {
 
   .video {
     max-width: 46rem;
+  }
+
+  .rodape__logos img {
+    height: 52px;
   }
 }
 
