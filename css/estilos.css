@@ -106,9 +106,17 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--cor-azul-claro);
+  outline: 3px solid var(--cor-azul-curso);
   outline-offset: 3px;
   border-radius: 3px;
+}
+
+/* sobre fundo escuro o contorno de foco precisa ser claro para aparecer */
+.secao--inicio :focus-visible,
+.secao--escura :focus-visible,
+.cabecalho :focus-visible,
+.rodape :focus-visible {
+  outline-color: var(--cor-ambar);
 }
 
 .pular-para-conteudo {
@@ -196,7 +204,7 @@ a {
 }
 
 .navegacao__botao:hover {
-  border-color: var(--cor-azul-claro);
+  border-color: var(--cor-ambar);
   color: var(--cor-branco);
 }
 
@@ -303,7 +311,7 @@ a {
 
 .secao--escura .secao__titulo::before {
   /* o mesmo sinal </> , na versao clara, para aparecer no fundo escuro */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234fb3e8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6 3 12l6 6'/%3E%3Cpath d='m15 6 6 6-6 6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffb703' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6 3 12l6 6'/%3E%3Cpath d='m15 6 6 6-6 6'/%3E%3C/svg%3E");
 }
 
 .secao--escura .secao__titulo::after {
@@ -355,7 +363,7 @@ a {
 }
 
 .secao--escura .lista-simples strong {
-  color: var(--cor-azul-claro);
+  color: var(--cor-branco);
 }
 
 .secao__nota {
@@ -497,7 +505,7 @@ a {
 }
 
 .inicio__dados li:hover {
-  border-color: var(--cor-azul-claro);
+  border-color: var(--cor-ambar);
 }
 
 .inicio__dados strong {
@@ -556,6 +564,38 @@ a {
 
 .botao--primario:hover::after {
   transform: rotate(-45deg) translate(3px, 3px);
+}
+
+/* botao para fundo claro: azul solido, como o kit define */
+.botao--azul {
+  background: var(--cor-azul-curso);
+  color: var(--cor-branco);
+  border: 1px solid var(--cor-azul-curso);
+}
+
+.botao--azul:hover {
+  background: var(--cor-azul-curso-escuro);
+  border-color: var(--cor-azul-curso-escuro);
+}
+
+/* botao secundario: so contorno, para nao competir com o principal */
+.botao--contorno {
+  background: transparent;
+  color: var(--cor-branco);
+  border: 2px solid rgba(255, 255, 255, 0.45);
+}
+
+.botao--contorno:hover {
+  border-color: var(--cor-ambar);
+  color: var(--cor-ambar);
+}
+
+/* fila de botoes que quebra sozinha no celular */
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.75rem 0 1.25rem;
 }
 
 .link-destaque {
@@ -631,11 +671,11 @@ a {
 }
 
 .secao--escura .cartao:hover {
-  border-color: var(--cor-azul-claro);
+  border-color: var(--cor-ambar);
 }
 
 .secao--escura .cartao__titulo {
-  color: var(--cor-azul-claro);
+  color: var(--cor-branco);
 }
 
 .secao--escura .cartao p {
@@ -816,7 +856,7 @@ a {
   background: var(--cor-tinta);
   border: 1px solid var(--cor-linha);
   border-radius: var(--raio-pequeno);
-  color: var(--cor-azul-claro);
+  color: var(--cor-branco);
   font-size: 0.82rem;
   font-weight: 700;
 }
