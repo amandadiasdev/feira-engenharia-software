@@ -1,10 +1,10 @@
 /* estilos.css: aparencia do site do curso de Engenharia de Software.
    Escrito primeiro para telas pequenas (mobile first) e depois ampliado
    para telas maiores com media queries.
-   A linguagem visual imita um editor de codigo: fundo escuro de editor,
-   guias de indentacao, fonte monoespacada nos rotulos, cartoes com barra
-   de janela e cursor piscando. Tudo em cores chapadas, sem degrades, e
-   sem imagens pesadas: as texturas sao desenhadas pelo proprio CSS. */
+   A linguagem visual vem do mundo da programacao: fundo escuro de editor,
+   guias de indentacao verticais, sinal </> acima dos titulos e cartoes de
+   borda simples. Tudo em cores chapadas, sem degrades, e sem imagens
+   pesadas: as texturas sao desenhadas pelo proprio CSS. */
 
 /* ---------------------------------------------------------------
    1. Variaveis de cor e medida
@@ -36,8 +36,6 @@
   --cor-borda: #cfd9e3;
 
   --fonte-texto: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --fonte-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
-    "Liberation Mono", monospace;
 
   --largura-maxima: 72rem;
   --espaco-secao: 4rem;
@@ -117,7 +115,6 @@ a {
   background: var(--cor-azul-marinho);
   color: var(--cor-branco);
   padding: 0.75rem 1rem;
-  font-family: var(--fonte-mono);
   border-radius: 0 0 var(--raio-pequeno) 0;
 }
 
@@ -175,7 +172,6 @@ a {
   gap: 0.6rem;
   color: var(--cor-branco);
   text-decoration: none;
-  font-family: var(--fonte-mono);
   font-weight: 700;
   font-size: 0.9rem;
 }
@@ -195,7 +191,6 @@ a {
   color: var(--cor-texto-claro);
   border: 1px solid var(--cor-linha);
   border-radius: var(--raio-pequeno);
-  font-family: var(--fonte-mono);
   font-size: 0.85rem;
   cursor: pointer;
   transition: border-color var(--transicao), color var(--transicao);
@@ -263,7 +258,6 @@ a {
   padding: 0.25rem 0.6rem;
   border-left: 3px solid transparent;
   color: var(--cor-texto-claro);
-  font-family: var(--fonte-mono);
   font-size: 0.92rem;
   text-decoration: none;
   transition: color var(--transicao), background-color var(--transicao),
@@ -376,9 +370,7 @@ a {
   background: var(--cor-branco);
 }
 
-/* comentarios de codigo: as notas e marcadores usam fonte monoespacada */
 .secao__nota {
-  font-family: var(--fonte-mono);
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--cor-texto-suave);
@@ -435,30 +427,6 @@ a {
   color: var(--cor-branco);
 }
 
-/* cursor de terminal piscando no fim da frase */
-.inicio__titulo::after {
-  content: "";
-  display: inline-block;
-  width: 0.55em;
-  height: 0.95em;
-  margin-left: 0.12em;
-  vertical-align: -0.12em;
-  background: var(--cor-azul-claro);
-  animation: cursor-piscando 1.1s steps(1) infinite;
-}
-
-@keyframes cursor-piscando {
-  50% {
-    opacity: 0;
-  }
-}
-
-/* quebra de linha da frase de impacto: so vale em tela larga. No celular
-   o texto quebra sozinho, entao a marca fica escondida */
-.quebra-tela-larga {
-  display: none;
-}
-
 .inicio__frase {
   max-width: 46ch;
   margin: 0 auto 2rem;
@@ -494,7 +462,6 @@ a {
 }
 
 .inicio__dados span {
-  font-family: var(--fonte-mono);
   font-size: 0.76rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -663,7 +630,6 @@ a {
   background: var(--cor-branco);
   border: 0;
   border-left: 3px solid transparent;
-  font-family: var(--fonte-mono);
   font-size: 1rem;
   font-weight: 700;
   color: var(--cor-azul-curso-escuro);
@@ -809,7 +775,6 @@ a {
   border: 1px solid var(--cor-linha);
   border-radius: var(--raio-pequeno);
   color: var(--cor-azul-claro);
-  font-family: var(--fonte-mono);
   font-size: 0.82rem;
   font-weight: 700;
 }
@@ -822,7 +787,6 @@ a {
 }
 
 .rede__texto strong {
-  font-family: var(--fonte-mono);
   font-size: 0.98rem;
 }
 
@@ -871,7 +835,6 @@ a {
 }
 
 .rodape__nota {
-  font-family: var(--fonte-mono);
   font-size: 0.82rem;
   line-height: 1.6;
   color: #93a7ba;
@@ -1005,11 +968,6 @@ a {
     transform: none;
   }
 
-  .inicio__titulo::after {
-    animation: none;
-    opacity: 1;
-  }
-
   .cartao:hover,
   .rede:hover,
   .link-destaque:hover,
@@ -1060,10 +1018,6 @@ a {
   .video,
   .rede__icone {
     border: 1px solid CanvasText;
-  }
-
-  .inicio__titulo::after {
-    background: CanvasText;
   }
 
   .navegacao__link.esta-ativo {
