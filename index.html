@@ -1,0 +1,557 @@
+<!-- index.html: pagina unica do site de divulgacao do curso de Engenharia de Software
+     da Unipampa, campus Alegrete, feito para a feira de ciencias e profissoes. -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Engenharia de Software | Unipampa Alegrete</title>
+    <meta
+      name="description"
+      content="Conheça o curso de Bacharelado em Engenharia de Software da Universidade Federal do Pampa, campus Alegrete."
+    />
+    <link rel="icon" href="assets/simbolo-engenharia-software.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+
+  <body>
+    <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="cabecalho">
+      <nav class="navegacao" aria-label="Navegação principal">
+        <a class="navegacao__marca" href="#inicio">
+          <img
+            src="assets/simbolo-engenharia-software.svg"
+            alt="Símbolo do curso de Engenharia de Software"
+            width="40"
+            height="34"
+          />
+          <span>Engenharia de Software</span>
+        </a>
+
+        <button
+          class="navegacao__botao"
+          id="botao-menu"
+          type="button"
+          aria-expanded="false"
+          aria-controls="menu"
+        >
+          <span class="navegacao__botao-barras" aria-hidden="true"></span>
+          <span class="navegacao__botao-texto">Menu</span>
+        </button>
+
+        <ul class="navegacao__lista" id="menu">
+          <li><a class="navegacao__link" href="#inicio">Início</a></li>
+          <li><a class="navegacao__link" href="#o-que-e">O que é</a></li>
+          <li><a class="navegacao__link" href="#curso">Como é o curso</a></li>
+          <li><a class="navegacao__link" href="#projetos">Projetos</a></li>
+          <li><a class="navegacao__link" href="#carreiras">Carreiras</a></li>
+          <li><a class="navegacao__link" href="#videos">Vídeos</a></li>
+          <li><a class="navegacao__link" href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="conteudo">
+      <!-- 1. Inicio -->
+      <section class="secao secao--inicio" id="inicio">
+        <div class="secao__interno inicio">
+          <img
+            class="inicio__logo"
+            src="assets/simbolo-engenharia-software.svg"
+            alt="Símbolo do curso de Engenharia de Software da Unipampa"
+            width="320"
+            height="276"
+          />
+          <h1 class="inicio__titulo">
+            Quem constrói os aplicativos e jogos<br class="quebra-tela-larga" />
+            que você usa todo dia?
+          </h1>
+          <p class="inicio__frase">
+            Engenharia de Software é o curso de quem transforma ideias em programas que funcionam,
+            na Universidade Federal do Pampa, campus Alegrete.
+          </p>
+          <a class="botao botao--primario" href="#o-que-e">Conheça o curso</a>
+
+          <ul class="inicio__dados">
+            <li><strong>Bacharelado</strong><span>grau conferido</span></li>
+            <li><strong>9 semestres</strong><span>duração prevista</span></li>
+            <li><strong>Noturno</strong><span>turno das aulas</span></li>
+            <li><strong>50 vagas</strong><span>por ano</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2. O que e Engenharia de Software -->
+      <section class="secao" id="o-que-e">
+        <div class="secao__interno">
+          <h2 class="secao__titulo">O que é Engenharia de Software</h2>
+
+          <p class="secao__texto">
+            Pense em uma ponte. Alguém precisa descobrir quantos carros vão passar, desenhar a
+            estrutura, calcular o material, construir e testar antes de liberar o trânsito.
+            <strong>Engenharia de Software faz o mesmo trabalho, só que com programas de
+            computador.</strong>
+          </p>
+
+          <p class="secao__texto">
+            Um aplicativo de banco, um jogo ou o sistema de um hospital não nascem de uma pessoa
+            digitando código sozinha até dar certo. Eles nascem de uma equipe que entende o
+            problema, combina como a solução vai funcionar, escreve o programa em partes, testa
+            cada parte e corrige o que falha. Quando um desses passos é pulado, o programa trava,
+            perde dados ou deixa alguém sem atendimento.
+          </p>
+
+          <ul class="cartoes cartoes--tres" role="list">
+            <li class="cartao animar">
+              <h3 class="cartao__titulo">Entender o problema</h3>
+              <p>
+                Conversar com quem vai usar o programa e descobrir o que ele realmente precisa
+                fazer. É a parte mais esquecida e a que mais causa erro.
+              </p>
+            </li>
+            <li class="cartao animar">
+              <h3 class="cartao__titulo">Projetar e construir</h3>
+              <p>
+                Desenhar como as partes do sistema conversam entre si e então programar essas
+                partes, uma de cada vez, com código que outra pessoa consiga ler depois.
+              </p>
+            </li>
+            <li class="cartao animar">
+              <h3 class="cartao__titulo">Testar e cuidar</h3>
+              <p>
+                Procurar falhas antes que o usuário encontre, medir a qualidade e continuar
+                melhorando o programa enquanto ele estiver no ar.
+              </p>
+            </li>
+          </ul>
+
+          <p class="secao__texto secao__texto--destaque">
+            Você não precisa saber programar para entrar no curso. As primeiras disciplinas
+            ensinam do começo.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Como e o curso -->
+      <section class="secao secao--alternada" id="curso">
+        <div class="secao__interno">
+          <h2 class="secao__titulo">Como é o curso</h2>
+          <p class="secao__texto">
+            O curso é presencial, noturno, tem 9 semestres e 3.300 horas no total. A cada semestre
+            você cursa disciplinas de quatro eixos: fundamentos da matemática, fundamentos da
+            computação, engenharia de software e contexto profissional. Toque em um semestre para
+            ver as disciplinas.
+          </p>
+
+          <div class="acordeao">
+            <article class="acordeao__item">
+              <h3>
+                <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-1">
+                  <span>1º semestre</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="semestre-1" hidden>
+                <ul>
+                  <li>Algoritmos e Programação</li>
+                  <li>Lógica Matemática</li>
+                  <li>Matemática Discreta</li>
+                  <li>Resolução de Problemas I</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="acordeao__item">
+              <h3>
+                <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-2">
+                  <span>2º semestre</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="semestre-2" hidden>
+                <ul>
+                  <li>Banco de Dados</li>
+                  <li>Computação e Sociedade</li>
+                  <li>Interação Humano-Computador</li>
+                  <li>Programação Orientada a Objetos</li>
+                  <li>Resolução de Problemas II</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="acordeao__item">
+              <h3>
+                <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-3">
+                  <span>3º semestre</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="semestre-3" hidden>
+                <ul>
+                  <li>Análise e Projeto de Software</li>
+                  <li>Arquitetura e Organização de Computadores</li>
+                  <li>Estruturas de Dados</li>
+                  <li>Inovação e Criatividade</li>
+                  <li>Linguagens Formais</li>
+                  <li>Resolução de Problemas III</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="acordeao__item">
+              <h3>
+                <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-4">
+                  <span>4º semestre</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="semestre-4" hidden>
+                <ul>
+                  <li>Análise e Projeto de Algoritmos</li>
+                  <li>Probabilidade e Estatística</li>
+                  <li>Processo e Qualidade de Software</li>
+                  <li>Sistemas Operacionais</li>
+                  <li>Verificação e Validação</li>
+                  <li>Resolução de Problemas IV</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="acordeao__item">
+              <h3>
+                <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-5">
+                  <span>5º semestre</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="semestre-5" hidden>
+                <ul>
+                  <li>Administração e Empreendedorismo</li>
+                  <li>Medição e Análise</li>
+                  <li>Redes de Computadores</li>
+                  <li>Resolução de Problemas V</li>
+                  <li>Componentes complementares (disciplinas que você escolhe)</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="acordeao__item">
+              <h3>
+                <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-6">
+                  <span>6º semestre</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="semestre-6" hidden>
+                <ul>
+                  <li>Metodologia da Pesquisa Acadêmica</li>
+                  <li>Resolução de Problemas VI</li>
+                  <li>Componentes complementares (disciplinas que você escolhe)</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="acordeao__item">
+              <h3>
+                <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-7">
+                  <span>7º semestre</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="semestre-7" hidden>
+                <ul>
+                  <li>Engenharia Econômica</li>
+                  <li>Ética e Legislação em Computação</li>
+                  <li>Trabalho de Conclusão de Curso I</li>
+                  <li>Componentes complementares (disciplinas que você escolhe)</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="acordeao__item">
+              <h3>
+                <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-8">
+                  <span>8º semestre</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="semestre-8" hidden>
+                <ul>
+                  <li>Teoria da Computação</li>
+                  <li>Trabalho de Conclusão de Curso II</li>
+                  <li>Componentes complementares (disciplinas que você escolhe)</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="acordeao__item">
+              <h3>
+                <button class="acordeao__gatilho" type="button" aria-expanded="false" aria-controls="semestre-9">
+                  <span>9º semestre</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="semestre-9" hidden>
+                <ul>
+                  <li>Estágio Obrigatório (240 horas trabalhando na área)</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <p class="secao__texto secao__nota">
+            Fonte das disciplinas: Projeto Pedagógico do Curso de Bacharelado em Engenharia de
+            Software, versão 18.4.4, abril de 2025, Tabelas 2 a 10.
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. Projetos -->
+      <section class="secao" id="projetos">
+        <div class="secao__interno">
+          <h2 class="secao__titulo">Projetos</h2>
+          <p class="secao__texto">
+            Estudantes e professores do curso levam software para fora da sala de aula. Estes são
+            projetos de extensão registrados no projeto pedagógico do curso.
+          </p>
+
+          <ul class="cartoes cartoes--tres" role="list">
+            <li class="cartao cartao--projeto animar">
+              <img
+                class="cartao__imagem"
+                src="assets/icone-alvo.png"
+                alt="Ilustração de um alvo com uma flecha no centro"
+                width="120"
+                height="120"
+                loading="lazy"
+              />
+              <h3 class="cartao__titulo">Programa JEDI</h3>
+              <p>
+                Resolve problemas locais com tecnologia, junto da comunidade e de empresas
+                públicas ou privadas, e forma pessoas em Tecnologia da Informação.
+              </p>
+              <p class="cartao__marcador">[PREENCHER: foto real do projeto e link da página]</p>
+            </li>
+
+            <li class="cartao cartao--projeto animar">
+              <img
+                class="cartao__imagem"
+                src="assets/icone-ideia.png"
+                alt="Ilustração de uma lâmpada recebendo uma peça de quebra-cabeça"
+                width="120"
+                height="120"
+                loading="lazy"
+              />
+              <h3 class="cartao__titulo">Engenharia de Software aplicada a causas sociais</h3>
+              <p>
+                Estudantes e professores ajudam organizações não governamentais e associações da
+                comunidade a melhorar seus processos com software.
+              </p>
+              <p class="cartao__marcador">[PREENCHER: foto real do projeto e link da página]</p>
+            </li>
+
+            <li class="cartao cartao--projeto animar">
+              <img
+                class="cartao__imagem"
+                src="assets/simbolo-engenharia-software.svg"
+                alt="Símbolo do curso de Engenharia de Software"
+                width="120"
+                height="103"
+                loading="lazy"
+              />
+              <h3 class="cartao__titulo">Consultoria de TI para o agronegócio</h3>
+              <p>
+                Apoia empresas e agricultores de baixa renda a desenvolver ou adotar novas
+                tecnologias e ferramentas no agronegócio.
+              </p>
+              <p class="cartao__marcador">[PREENCHER: foto real do projeto e link da página]</p>
+            </li>
+          </ul>
+
+          <p class="secao__texto secao__nota">
+            [PREENCHER: projetos de estudantes que a coordenação quiser mostrar na feira, com
+            título, resumo de duas linhas e foto]
+          </p>
+        </div>
+      </section>
+
+      <!-- 5. Carreiras -->
+      <section class="secao secao--escura" id="carreiras">
+        <div class="secao__interno">
+          <h2 class="secao__titulo">Carreiras</h2>
+          <p class="secao__texto">
+            Quem se forma em Engenharia de Software não fica preso a um único tipo de trabalho. O
+            projeto pedagógico do curso lista cinco caminhos principais.
+          </p>
+
+          <ul class="cartoes cartoes--duas" role="list">
+            <li class="cartao animar">
+              <h3 class="cartao__titulo">Desenvolvedor</h3>
+              <p>
+                Constrói o software em organizações que criam programas para uso próprio ou para
+                vender.
+              </p>
+            </li>
+            <li class="cartao animar">
+              <h3 class="cartao__titulo">Gestor</h3>
+              <p>
+                Organiza equipes, prazos, custos e escopo dentro de organizações que produzem
+                software.
+              </p>
+            </li>
+            <li class="cartao animar">
+              <h3 class="cartao__titulo">Consultor</h3>
+              <p>
+                Ajuda empresas a melhorar continuamente a forma como produzem software, usando
+                modelos de qualidade.
+              </p>
+            </li>
+            <li class="cartao animar">
+              <h3 class="cartao__titulo">Pesquisador</h3>
+              <p>
+                Investiga novas técnicas de engenharia de software em universidades e centros de
+                pesquisa.
+              </p>
+            </li>
+            <li class="cartao animar">
+              <h3 class="cartao__titulo">Empreendedor</h3>
+              <p>
+                Cria a própria empresa e oferece software como produto, projeto ou serviço.
+              </p>
+            </li>
+          </ul>
+
+          <p class="secao__texto secao__nota">
+            [PREENCHER: exemplos de empresas e cargos onde pessoas formadas pelo curso trabalham
+            hoje]
+          </p>
+        </div>
+      </section>
+
+      <!-- 6. Videos -->
+      <section class="secao secao--alternada" id="videos">
+        <div class="secao__interno">
+          <h2 class="secao__titulo">Vídeos</h2>
+          <p class="secao__texto">Veja e ouça quem já está no curso.</p>
+
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/OEqte4sNRGA"
+              title="Vídeo de apresentação do curso de Engenharia de Software da Unipampa"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <p class="secao__texto secao__nota">[PREENCHER: outros vídeos do curso, se houver]</p>
+        </div>
+      </section>
+
+      <!-- 7. Contato e redes sociais -->
+      <section class="secao" id="contato">
+        <div class="secao__interno">
+          <h2 class="secao__titulo">Contato e redes sociais</h2>
+          <p class="secao__texto">
+            Ficou com dúvida? Fale com o curso ou acompanhe o dia a dia pelas redes.
+          </p>
+
+          <ul class="redes" role="list">
+            <li>
+              <a
+                class="rede"
+                href="https://www.instagram.com/engenhariadesoftware.unipampa/"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="rede__icone" aria-hidden="true">IG</span>
+                <span class="rede__texto">
+                  <strong>@engenhariadesoftware.unipampa</strong>
+                  <span>Instagram do curso</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="rede"
+                href="https://www.instagram.com/daes.unipampa/"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="rede__icone" aria-hidden="true">IG</span>
+                <span class="rede__texto">
+                  <strong>@daes.unipampa</strong>
+                  <span>Diretório Acadêmico da Engenharia de Software</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="rede"
+                href="https://www.instagram.com/unipampa.alegrete/"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="rede__icone" aria-hidden="true">IG</span>
+                <span class="rede__texto">
+                  <strong>@unipampa.alegrete</strong>
+                  <span>Instagram do campus Alegrete</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="rede"
+                href="https://cursos.unipampa.edu.br/cursos/engenhariadesoftware/"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="rede__icone" aria-hidden="true">WEB</span>
+                <span class="rede__texto">
+                  <strong>Site oficial do curso</strong>
+                  <span>cursos.unipampa.edu.br</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="rede" href="mailto:ales@listas.unipampa.edu.br">
+                <span class="rede__icone" aria-hidden="true">@</span>
+                <span class="rede__texto">
+                  <strong>ales@listas.unipampa.edu.br</strong>
+                  <span>E-mail do curso</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <p class="secao__texto">
+            <a class="link-destaque" href="https://cursos.unipampa.edu.br/cursos/engenhariadesoftware/" target="_blank" rel="noopener">
+              Quero saber como entrar no curso
+            </a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <div class="secao__interno rodape__interno">
+        <div class="rodape__logos">
+          <img src="assets/logo-engenharia-software.png" alt="Logo do curso de Engenharia de Software da Unipampa" width="150" height="122" loading="lazy" />
+          <img src="assets/logo-unipampa.png" alt="Logo da Universidade Federal do Pampa" width="150" height="103" loading="lazy" />
+          <img src="assets/logo-daes.png" alt="Logo do Diretório Acadêmico da Engenharia de Software" width="110" height="110" loading="lazy" />
+        </div>
+        <p>
+          Curso de Bacharelado em Engenharia de Software<br />
+          Universidade Federal do Pampa, campus Alegrete
+        </p>
+        <p class="rodape__nota">
+          Página feita por estudantes para a feira de ciências e profissões do campus.
+          [PREENCHER: nome de quem manterá a página]
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/principal.js"></script>
+  </body>
+</html>
