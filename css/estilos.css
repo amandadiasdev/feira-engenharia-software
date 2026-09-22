@@ -38,6 +38,8 @@
   --cor-borda: #cfd9e3;
 
   --fonte-texto: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
 
   --largura-maxima: 72rem;
   --espaco-secao: 4rem;
@@ -369,7 +371,8 @@ a {
 }
 
 .secao__nota {
-  font-size: 0.85rem;
+  font-family: var(--fonte-mono);
+  font-size: 0.82rem;
   line-height: 1.6;
   color: var(--cor-texto-suave);
 }
@@ -459,10 +462,12 @@ a {
   color: var(--cor-branco);
 }
 
+/* rotulos seguem a regra do kit: monoespacados, em minusculas e com
+   espacamento maior entre as letras */
 .inicio__dados span {
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-family: var(--fonte-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
   color: var(--cor-azul-claro);
 }
 
@@ -780,7 +785,8 @@ a {
 }
 
 .rede__texto strong {
-  font-size: 0.98rem;
+  font-family: var(--fonte-mono);
+  font-size: 0.92rem;
 }
 
 .rede__texto span {
@@ -829,7 +835,8 @@ a {
 }
 
 .rodape__nota {
-  font-size: 0.82rem;
+  font-family: var(--fonte-mono);
+  font-size: 0.78rem;
   line-height: 1.6;
   color: #93a7ba;
 }
@@ -934,6 +941,11 @@ a {
 
   .rodape__logos img {
     height: 52px;
+  }
+
+  .inicio__dados span {
+    font-size: 0.8rem;
+    letter-spacing: 0.075em;
   }
 }
 

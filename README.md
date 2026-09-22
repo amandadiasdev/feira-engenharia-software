@@ -28,7 +28,11 @@ assets/         logos, ícones e fotos
    aparece no topo, no formato `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
 
 Cada vez que você alterar um arquivo no GitHub, o site é publicado de novo sozinho em cerca de
-um minuto. Se a mudança não aparecer, atualize a página segurando Shift ou abra em uma aba
+um minuto.
+
+Se você mexer em `css/estilos.css` ou em `js/principal.js`, abra o `index.html` e aumente o
+número em `estilos.css?v=2` e `principal.js?v=2` (vira `v=3`, depois `v=4`). Sem isso, quem já
+visitou o site continua vendo a versão antiga guardada no navegador por uns 10 minutos. Se a mudança não aparecer, atualize a página segurando Shift ou abra em uma aba
 anônima.
 
 ## Como trocar textos sem saber programar
@@ -86,7 +90,8 @@ estão no topo de `css/estilos.css` e não devem ser trocadas uma a uma:
 | `#FFFFFF` `#F1F5F9` `#CFD9E3` `#16202B` | papel, fundo alternado, bordas e texto                |
 
 Regras que vêm do kit: o âmbar ocupa no máximo 10% da página, nada de degradê ou brilho, e as
-logos não aparecem no topo, só pequenas no rodapé. A fonte é Inter.
+logos não aparecem no topo, só pequenas no rodapé. As fontes são Inter, para texto e títulos, e
+JetBrains Mono, só nos rótulos pequenos, que o kit manda escrever em minúsculas.
 
 ## Origem das informações
 
