@@ -1,5 +1,5 @@
 <!-- index.html: pagina unica do site de divulgacao do curso de Engenharia de Software
-     da Unipampa, campus Alegrete, feito para a feira de ciencias e profissoes. -->
+     da Unipampa, campus Alegrete, feito para a feira de profissoes. -->
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -14,10 +14,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/estilos.css?v=4" />
+    <link rel="stylesheet" href="css/estilos.css?v=5" />
   </head>
 
   <body>
@@ -26,6 +26,13 @@
     <header class="cabecalho">
       <nav class="navegacao" aria-label="Navegação principal">
         <a class="navegacao__marca" href="#inicio">
+          <img
+            class="navegacao__simbolo"
+            src="assets/simbolo-engenharia-software.svg"
+            alt=""
+            width="28"
+            height="24"
+          />
           <span>Engenharia de Software</span>
         </a>
 
@@ -65,6 +72,15 @@
             Engenharia de Software é o curso de quem transforma ideias em programas que funcionam,
             na Universidade Federal do Pampa, campus Alegrete.
           </p>
+          <div class="fluxo">
+            <p class="fluxo__origem">
+              feira de profissões · unipampa · campus alegrete
+            </p>
+            <ul class="fluxo__nos" role="list">
+              <li class="fluxo__no fluxo__no--aqui">Engenharia de Software</li>
+            </ul>
+          </div>
+
           <a class="botao botao--primario" href="#o-que-e">Conheça o curso</a>
 
           <ul class="inicio__dados">
@@ -711,11 +727,11 @@
           Universidade Federal do Pampa, campus Alegrete
         </p>
         <p class="rodape__nota">
-          Página feita por estudantes para a feira de ciências e profissões do campus.
+          Página feita por estudantes para a feira de profissões do campus.
         </p>
       </div>
     </footer>
 
-    <script src="js/principal.js?v=4"></script>
+    <script src="js/principal.js?v=5"></script>
   </body>
 </html>

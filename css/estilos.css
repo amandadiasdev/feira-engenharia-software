@@ -1,19 +1,22 @@
 /* estilos.css: aparencia do site do curso de Engenharia de Software.
    Escrito primeiro para telas pequenas (mobile first) e depois ampliado
    para telas maiores com media queries.
-   A linguagem visual vem do mundo da programacao: fundo escuro de editor,
-   guias de indentacao verticais, sinal </> acima dos titulos e cartoes de
-   borda simples. Tudo em cores chapadas, sem degrades, e sem imagens
-   pesadas: as texturas sao desenhadas pelo proprio CSS. */
+   A linguagem visual vem do BrandKit da Feira das Profissoes: o site e
+   um fluxograma. Fundo de papel quadriculado, nos de contorno fino com
+   canto de 4px, conectores que dobram em 90 graus e terminam em seta
+   cheia. Tudo em cor chapada, sem degrade, sem brilho e sem sombra: as
+   texturas sao desenhadas pelo proprio CSS. */
 
 /* ---------------------------------------------------------------
    1. Variaveis de cor e medida
-   Cores oficiais retiradas dos arquivos de logo do curso:
-   azul do curso #136795, preto #000000 e branco #FFFFFF.
-   O azul claro #4FB3E8 e uma variacao mais clara do azul do curso,
-   usada so para detalhes sobre os fundos escuros.
-   O azul marinho #051A66 vem da logo do DAES e e usado somente
-   em botoes primarios e links de destaque.
+   Paleta do BrandKit da Feira das Profissoes, painel T0:
+   tinta #0B1117 (fundo de tudo), marinho #051A66 (faixas e rodape),
+   azul do curso #136795 (acao sobre fundo claro), azul claro #4FB3E8
+   (rotulos, contorno e conexao), ambar #FFB703 (o caminho escolhido)
+   e laranja #FB8500 (forma, nunca texto claro).
+   Regra de contraste medida no kit: sobre fundo claro o ambar da 1.70:1
+   e o laranja 2.48:1, entao nenhum dos dois vira texto ali; no claro o
+   destaque passa para o azul do curso.
    --------------------------------------------------------------- */
 :root {
   --cor-azul-curso: #136795;
@@ -31,36 +34,57 @@
   --cor-texto: #16202b;
   --cor-texto-suave: #4c5b6b;
   --cor-texto-claro: #e8eef5;
-  --cor-texto-claro-suave: #aebdcc;
+  --cor-texto-claro-suave: #8a9aab; /* "apagado" do kit: 6.59:1 sobre tinta */
 
   --cor-branco: #ffffff;
-  --cor-fundo-alternado: #f1f5f9;
-  --cor-borda: #cfd9e3;
+  --cor-fundo-alternado: #eaf2f8;
+  --cor-borda: #c9d8e3;
 
   --fonte-texto: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --fonte-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+  /* Geist Mono carrega display, titulo, rotulo e no; Inter fica so no
+     texto corrido, como manda o painel T0 do kit */
+  --fonte-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
     monospace;
+
+  /* setas desenhadas uma vez so e reaproveitadas. Vem como mascara, e
+     nao como imagem colorida, para herdarem a cor do texto de quem usa.
+     As pontas sao arredondadas (stroke-linejoin) para ficarem macias */
+  --seta-direita: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9.5 5.5 6.5 6.5-6.5 6.5'/%3E%3C/svg%3E");
+  --seta-baixo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5.5 9.5 12 16l6.5-6.5'/%3E%3C/svg%3E");
+  --seta-cheia: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5.5 17 12l-9 6.5z' fill='%23000' stroke='%23000' stroke-width='3.4' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   --largura-maxima: 72rem;
   --espaco-secao: 4rem;
-  --raio: 0.5rem;
-  --raio-pequeno: 0.35rem;
-  --sombra: 0 1px 2px rgba(11, 17, 23, 0.06);
-  --sombra-forte: 0 10px 24px rgba(11, 17, 23, 0.14);
+  /* respiro nas laterais: no celular o texto nunca encosta na borda */
+  --respiro-lateral: 1.5rem;
+  /* o kit limita o canto do no a 4px, e nada no site arredonda mais que isso */
+  --raio: 4px;
+  --raio-pequeno: 4px;
   --altura-cabecalho: 3.75rem;
   --transicao: 160ms ease;
 
-  /* guias de indentacao, como as linhas verticais de um editor */
-  --guias-claras: repeating-linear-gradient(
-    90deg,
-    rgba(19, 103, 149, 0.09) 0 1px,
-    transparent 1px 96px
-  );
-  --guias-escuras: repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.05) 0 1px,
-    transparent 1px 96px
-  );
+  /* papel quadriculado de rascunho: linha de 1px a cada 48px, 4.5% de
+     opacidade, desenhada pelo CSS e nunca uma imagem (painel T2) */
+  --grade-clara: repeating-linear-gradient(
+      90deg,
+      rgba(19, 103, 149, 0.09) 0 1px,
+      transparent 1px 48px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(19, 103, 149, 0.09) 0 1px,
+      transparent 1px 48px
+    );
+  --grade-escura: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.045) 0 1px,
+      transparent 1px 48px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.045) 0 1px,
+      transparent 1px 48px
+    );
 }
 
 /* ---------------------------------------------------------------
@@ -170,7 +194,7 @@ a {
 .navegacao {
   max-width: var(--largura-maxima);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 var(--respiro-lateral);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -181,11 +205,21 @@ a {
 .navegacao__marca {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   color: var(--cor-branco);
   text-decoration: none;
+  font-family: var(--fonte-mono);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  letter-spacing: -0.01em;
+}
+
+/* o simbolo do curso e a unica marca no topo; as logos institucionais
+   continuam so no rodape, como o kit pede */
+.navegacao__simbolo {
+  flex-shrink: 0;
+  width: auto;
+  height: 1.5rem;
 }
 
 .navegacao__botao {
@@ -265,7 +299,8 @@ a {
   padding: 0.25rem 0.6rem;
   border-left: 3px solid transparent;
   color: var(--cor-texto-claro);
-  font-size: 0.92rem;
+  font-family: var(--fonte-mono);
+  font-size: 0.85rem;
   text-decoration: none;
   transition: color var(--transicao), background-color var(--transicao),
     border-color var(--transicao);
@@ -292,14 +327,14 @@ a {
 
 .secao--alternada {
   background-color: var(--cor-fundo-alternado);
-  background-image: var(--guias-claras);
+  background-image: var(--grade-clara);
   border-top: 1px solid var(--cor-borda);
   border-bottom: 1px solid var(--cor-borda);
 }
 
 .secao--escura {
   background-color: var(--cor-tinta);
-  background-image: var(--guias-escuras);
+  background-image: var(--grade-escura);
   color: var(--cor-texto-claro);
   border-top: 1px solid var(--cor-linha);
   border-bottom: 1px solid var(--cor-linha);
@@ -310,12 +345,12 @@ a {
 }
 
 .secao--escura .secao__titulo::before {
-  /* o mesmo sinal </> , na versao clara, para aparecer no fundo escuro */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffb703' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6 3 12l6 6'/%3E%3Cpath d='m15 6 6 6-6 6'/%3E%3C/svg%3E");
+  /* o mesmo no, agora em azul claro, que e a cor de conexao sobre a tinta */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234fb3e8' stroke-width='1.6'%3E%3Crect x='2.8' y='1.8' width='18.4' height='8' rx='1'/%3E%3Cpath d='M12 9.8v6.4'/%3E%3Cpath d='M7.6 16.2h8.8L12 22.4z' fill='%234fb3e8' stroke='none'/%3E%3C/svg%3E");
 }
 
 .secao--escura .secao__titulo::after {
-  background: var(--cor-ambar);
+  background: var(--cor-azul-claro);
 }
 
 .secao--escura .secao__texto {
@@ -374,33 +409,38 @@ a {
   position: relative;
   max-width: var(--largura-maxima);
   margin: 0 auto;
-  padding: 0 1.15rem;
+  padding: 0 var(--respiro-lateral);
 }
 
-/* sinal </> acima do titulo: marca de codigo, desenhada em SVG */
+/* marca acima do titulo: um no, o conector descendo e a seta cheia.
+   E o mesmo desenho do fluxograma, reduzido a um icone */
 .secao__titulo::before {
   content: "";
   display: block;
-  width: 1.65rem;
-  height: 1.65rem;
-  margin-bottom: 0.6rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23136795' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6 3 12l6 6'/%3E%3Cpath d='m15 6 6 6-6 6'/%3E%3C/svg%3E");
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 0.65rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23136795' stroke-width='1.6'%3E%3Crect x='2.8' y='1.8' width='18.4' height='8' rx='1'/%3E%3Cpath d='M12 9.8v6.4'/%3E%3Cpath d='M7.6 16.2h8.8L12 22.4z' fill='%23136795' stroke='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .secao__titulo {
-  font-size: clamp(1.7rem, 5.8vw, 2.25rem);
+  font-family: var(--fonte-mono);
+  font-size: clamp(1.3rem, 4.6vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--cor-azul-curso);
 }
 
+/* traco curto do conector, na largura de um no pequeno */
 .secao__titulo::after {
   content: "";
   display: block;
   width: 2.5rem;
-  height: 3px;
+  height: 2px;
   margin-top: 0.7rem;
-  background: var(--cor-laranja);
+  background: var(--cor-azul-curso);
 }
 
 .secao__texto {
@@ -423,6 +463,7 @@ a {
 }
 
 .secao__nota {
+  margin-top: 2rem;
   font-family: var(--fonte-mono);
   font-size: 0.82rem;
   line-height: 1.6;
@@ -441,34 +482,24 @@ a {
   border-bottom: 1px solid var(--cor-linha);
 }
 
-/* guias de indentacao do editor */
+/* papel quadriculado atras do diagrama de abertura */
 .secao--inicio::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-image: var(--guias-escuras);
-}
-
-/* parede de codigo desfocado ao fundo: barras que imitam linhas escritas */
-.secao--inicio::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='176'%3E%3Cg fill='%23ffffff' fill-opacity='0.055'%3E%3Crect x='24' y='8' width='96' height='7' rx='2'/%3E%3Crect x='40' y='30' width='66' height='7' rx='2'/%3E%3Crect x='40' y='52' width='120' height='7' rx='2'/%3E%3Crect x='56' y='74' width='52' height='7' rx='2'/%3E%3Crect x='24' y='118' width='84' height='7' rx='2'/%3E%3Crect x='40' y='140' width='110' height='7' rx='2'/%3E%3C/g%3E%3Cg fill='%234fb3e8' fill-opacity='0.11'%3E%3Crect x='128' y='8' width='44' height='7' rx='2'/%3E%3Crect x='114' y='30' width='38' height='7' rx='2'/%3E%3Crect x='168' y='52' width='30' height='7' rx='2'/%3E%3Crect x='116' y='74' width='72' height='7' rx='2'/%3E%3Crect x='24' y='96' width='58' height='7' rx='2'/%3E%3Crect x='116' y='118' width='40' height='7' rx='2'/%3E%3C/g%3E%3C/svg%3E");
-  mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+  background-image: var(--grade-escura);
 }
 
 .inicio {
-  text-align: center;
+  text-align: left;
 }
 
 .inicio__titulo {
-  font-size: clamp(1.9rem, 7.1vw, 3.6rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-family: var(--fonte-mono);
+  font-size: clamp(1.45rem, 5.4vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
   /* distribui as palavras entre as linhas em vez de deixar uma sozinha */
   text-wrap: balance;
   color: var(--cor-branco);
@@ -481,8 +512,8 @@ a {
 }
 
 .inicio__frase {
-  max-width: 46ch;
-  margin: 0 auto 2rem;
+  max-width: 52ch;
+  margin: 0 0 2rem;
   font-size: 1.08rem;
   color: var(--cor-texto-claro-suave);
 }
@@ -510,7 +541,9 @@ a {
 
 .inicio__dados strong {
   display: block;
-  font-size: 1.15rem;
+  font-family: var(--fonte-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--cor-branco);
 }
 
@@ -524,6 +557,90 @@ a {
 }
 
 /* ---------------------------------------------------------------
+   5b. Fluxograma de abertura
+   E a peca central do BrandKit: a feira e o ponto de partida e o curso
+   e o no para onde o caminho leva. O desenho sempre desce, dobra em 90
+   graus e termina em seta cheia, em qualquer largura de tela.
+   --------------------------------------------------------------- */
+.fluxo {
+  margin: 2.25rem 0;
+}
+
+.fluxo__origem {
+  position: relative;
+  margin: 0 0 0.9rem;
+  padding-right: 0.5rem;
+  font-family: var(--fonte-mono);
+  font-size: 0.76rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--cor-azul-claro);
+}
+
+.fluxo__nos {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.6rem;
+  display: grid;
+  gap: 0.7rem;
+  max-width: 30rem;
+}
+
+.fluxo__no {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 3.2rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--cor-azul-claro);
+  border-radius: var(--raio);
+  background: var(--cor-tinta-2);
+  font-family: var(--fonte-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cor-texto-claro);
+}
+
+/* o conector: desce do rotulo, dobra para a direita com um canto macio
+   e entra no no. A altura acompanha o no, entao a dobra fica sempre na
+   mesma linha do centro dele, mesmo quando o texto quebra em duas linhas */
+.fluxo__no::before {
+  content: "";
+  position: absolute;
+  left: -1.6rem;
+  bottom: 50%;
+  width: 1.6rem;
+  height: calc(50% + 0.9rem);
+  border-left: 1px solid var(--cor-azul-claro);
+  border-bottom: 1px solid var(--cor-azul-claro);
+  border-bottom-left-radius: 8px;
+}
+
+/* a ponta de seta: cheia, como o kit pede, mas de cantos arredondados */
+.fluxo__no::after {
+  content: "";
+  position: absolute;
+  left: -0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: var(--cor-azul-claro);
+  -webkit-mask: var(--seta-cheia) center / contain no-repeat;
+  mask: var(--seta-cheia) center / contain no-repeat;
+}
+
+/* o no que diz onde voce esta: contorno grosso, sem mudar de cor, porque
+   o ambar da pagina ja esta reservado para o botao principal */
+.fluxo__no--aqui {
+  border-width: 2px;
+  color: var(--cor-branco);
+}
+
+/* ---------------------------------------------------------------
    6. Botoes e links de destaque (unico lugar do azul marinho)
    --------------------------------------------------------------- */
 .botao {
@@ -534,8 +651,10 @@ a {
   min-height: 50px;
   padding: 0.5rem 1.75rem;
   border-radius: var(--raio);
+  font-family: var(--fonte-mono);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
   text-decoration: none;
   transition: background-color var(--transicao), transform var(--transicao);
 }
@@ -546,14 +665,14 @@ a {
   border: 1px solid var(--cor-ambar);
 }
 
-/* seta desenhada com bordas, que anda para a direita no hover */
+/* seta de ponta arredondada, que anda para a direita no hover */
 .botao--primario::after {
   content: "";
-  width: 0.5rem;
-  height: 0.5rem;
-  border-right: 2.5px solid currentColor;
-  border-bottom: 2.5px solid currentColor;
-  transform: rotate(-45deg);
+  width: 0.85rem;
+  height: 0.85rem;
+  background-color: currentColor;
+  -webkit-mask: var(--seta-direita) center / contain no-repeat;
+  mask: var(--seta-direita) center / contain no-repeat;
   transition: transform var(--transicao);
 }
 
@@ -563,7 +682,7 @@ a {
 }
 
 .botao--primario:hover::after {
-  transform: rotate(-45deg) translate(3px, 3px);
+  transform: translateX(3px);
 }
 
 /* botao para fundo claro: azul solido, como o kit define */
@@ -615,11 +734,11 @@ a {
 }
 
 /* ---------------------------------------------------------------
-   7. Cartoes (janelas de aplicativo)
+   7. Cartoes (nos do fluxograma)
    --------------------------------------------------------------- */
 .cartoes {
   list-style: none;
-  margin: 2rem 0 0;
+  margin: 2rem 0 2.5rem;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
@@ -632,15 +751,12 @@ a {
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
   padding: 1.35rem 1.25rem;
-  box-shadow: var(--sombra);
-  transition: transform var(--transicao), border-color var(--transicao),
-    box-shadow var(--transicao);
+  transition: transform var(--transicao), border-color var(--transicao);
 }
 
 .cartao:hover {
   transform: translateY(-4px);
   border-color: var(--cor-azul-curso);
-  box-shadow: var(--sombra-forte);
 }
 
 .cartao p {
@@ -649,8 +765,10 @@ a {
 }
 
 .cartao__titulo {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-family: var(--fonte-mono);
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--cor-azul-curso);
 }
 
@@ -664,10 +782,10 @@ a {
   border-radius: var(--raio-pequeno);
 }
 
+/* sobre a tinta o no usa o contorno azul claro, que e a cor de conexao */
 .secao--escura .cartao {
   background: var(--cor-tinta-2);
-  border-color: var(--cor-linha);
-  box-shadow: none;
+  border-color: rgba(79, 179, 232, 0.45);
 }
 
 .secao--escura .cartao:hover {
@@ -686,7 +804,7 @@ a {
    8. Acordeao das disciplinas (arvore de arquivos do editor)
    --------------------------------------------------------------- */
 .acordeao {
-  margin-top: 1.5rem;
+  margin: 1.75rem 0 2.5rem;
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
   overflow: hidden;
@@ -712,7 +830,8 @@ a {
   background: var(--cor-branco);
   border: 0;
   border-left: 3px solid transparent;
-  font-size: 1rem;
+  font-family: var(--fonte-mono);
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--cor-azul-curso);
   text-align: left;
@@ -746,12 +865,11 @@ a {
 
 .acordeao__seta::before {
   content: "";
-  width: 0.45rem;
-  height: 0.45rem;
-  margin-top: -0.18rem;
-  border-right: 2.5px solid currentColor;
-  border-bottom: 2.5px solid currentColor;
-  transform: rotate(45deg);
+  width: 0.95rem;
+  height: 0.95rem;
+  background-color: currentColor;
+  -webkit-mask: var(--seta-baixo) center / contain no-repeat;
+  mask: var(--seta-baixo) center / contain no-repeat;
 }
 
 .acordeao__gatilho[aria-expanded="true"] .acordeao__seta {
@@ -797,7 +915,7 @@ a {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  margin: 1.5rem 0;
+  margin: 1.75rem 0 2.5rem;
   padding: 1px;
   background-color: var(--cor-tinta);
   border: 1px solid var(--cor-linha);
@@ -819,7 +937,7 @@ a {
    --------------------------------------------------------------- */
 .redes {
   list-style: none;
-  margin: 1.5rem 0;
+  margin: 1.75rem 0 2.5rem;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
@@ -837,7 +955,6 @@ a {
   border-radius: var(--raio);
   color: var(--cor-texto);
   text-decoration: none;
-  box-shadow: var(--sombra);
   transition: transform var(--transicao), border-color var(--transicao);
 }
 
@@ -884,7 +1001,7 @@ a {
 .rodape {
   position: relative;
   background: var(--cor-azul-marinho);
-  background-image: var(--guias-escuras);
+  background-image: var(--grade-escura);
   color: var(--cor-texto-claro);
   padding: 2.75rem 0 2.5rem;
   border-top: 3px solid var(--cor-ambar);
@@ -965,6 +1082,7 @@ a {
 @media (min-width: 48rem) {
   :root {
     --espaco-secao: 5rem;
+    --respiro-lateral: 2.25rem;
   }
 
   .navegacao__botao {
@@ -1003,8 +1121,14 @@ a {
 
   .inicio__dados {
     grid-template-columns: repeat(4, 1fr);
-    max-width: 52rem;
-    margin-inline: auto;
+  }
+
+  .fluxo__origem {
+    font-size: 0.8rem;
+  }
+
+  .fluxo__no {
+    font-size: 0.82rem;
   }
 
   .cartoes--duas {
@@ -1078,7 +1202,7 @@ a {
 @media (prefers-contrast: more) {
   :root {
     --cor-texto-suave: #2c3a48;
-    --cor-texto-claro-suave: #dce9f4;
+    --cor-texto-claro-suave: #cfe0ee;
     --cor-borda: #7d8b99;
     --cor-linha: #5b6f84;
   }
@@ -1086,7 +1210,8 @@ a {
   .cartao,
   .rede,
   .acordeao,
-  .inicio__dados li {
+  .inicio__dados li,
+  .fluxo__no {
     border-width: 2px;
   }
 
@@ -1095,10 +1220,6 @@ a {
   .secao--inicio::before,
   .rodape {
     background-image: none;
-  }
-
-  .secao--inicio::after {
-    display: none;
   }
 }
 
@@ -1110,7 +1231,8 @@ a {
   .acordeao,
   .inicio__dados li,
   .video,
-  .rede__icone {
+  .rede__icone,
+  .fluxo__no {
     border: 1px solid CanvasText;
   }
 

@@ -1,6 +1,6 @@
 # Site do curso de Engenharia de Software (Unipampa, campus Alegrete)
 
-Página única feita para a feira de ciências e profissões do campus. Usa apenas HTML, CSS e
+Página única feita para a feira de profissões do campus. Usa apenas HTML, CSS e
 JavaScript, então roda direto no GitHub Pages, sem servidor e sem instalação.
 
 ## Arquivos
@@ -76,22 +76,33 @@ só aparece com internet.
 
 ## Identidade visual
 
-O site segue o BrandKit da Feira das Profissões (rota A, azuis oficiais mais âmbar). As cores
-estão no topo de `css/estilos.css` e não devem ser trocadas uma a uma:
+O site segue o BrandKit da Feira das Profissões (rota A, fluxograma). A identidade é um
+diagrama de escolha: a feira é o ponto de partida e o curso é o nó para onde o caminho leva.
+As cores estão no topo de `css/estilos.css` e não devem ser trocadas uma a uma:
 
 | Cor                                     | Onde entra                                            |
 | --------------------------------------- | ----------------------------------------------------- |
 | `#0B1117` tinta                         | fundo escuro principal                                |
 | `#051A66` marinho DAES                  | rodapé e faixas institucionais                        |
 | `#136795` azul do curso                 | títulos, links e botões sobre fundo claro             |
-| `#4FB3E8` azul claro                    | detalhes e rótulos sobre fundo escuro                 |
+| `#4FB3E8` azul claro                    | rótulos, contorno dos nós e linhas do diagrama        |
 | `#FFB703` âmbar                         | botão principal, item de menu ativo, barra de leitura |
-| `#FB8500` laranja                       | barras e blocos de apoio                              |
-| `#FFFFFF` `#F1F5F9` `#CFD9E3` `#16202B` | papel, fundo alternado, bordas e texto                |
+| `#FB8500` laranja                       | só como forma, nunca como texto                       |
+| `#FFFFFF` `#EAF2F8` `#C9D8E3` `#16202B` | papel, fundo alternado, bordas e texto                |
 
-Regras que vêm do kit: o âmbar ocupa no máximo 10% da página, nada de degradê ou brilho, e as
-logos não aparecem no topo, só pequenas no rodapé. As fontes são Inter, para texto e títulos, e
-JetBrains Mono, só nos rótulos pequenos, que o kit manda escrever em minúsculas.
+Regras que vêm do kit e que o CSS já respeita:
+
+- **Fontes:** Geist Mono no display, nos títulos, nos rótulos e nos nós; Inter só no texto
+  corrido. As duas vêm do Google Fonts.
+- **Desenho do diagrama:** a linha desce, dobra em 90 graus e termina em seta cheia. Nunca
+  curva e nunca diagonal.
+- **Nó:** contorno de 1px e canto de no máximo 4px. Por isso `--raio` vale `4px`.
+- **Fundo:** papel quadriculado de 1px a cada 48px, desenhado em CSS e nunca uma imagem.
+- **Proibido:** degradê, brilho, vidro fosco e sombra. Só cor chapada e linha de 1px.
+- **Âmbar:** um destaque por seção. Sobre fundo claro o âmbar dá 1.70:1 e o laranja 2.48:1,
+  então nesses fundos os dois são só forma e o destaque passa para o azul do curso.
+- **Logos:** as logos institucionais ficam pequenas no rodapé. No topo aparece apenas o
+  símbolo do próprio curso.
 
 ## Origem das informações
 
