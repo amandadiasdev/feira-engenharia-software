@@ -619,7 +619,7 @@ a {
    antes do titulo; em tela larga vira a coluna da direita do inicio.
    Sobre o branco o rotulo usa o azul do curso, como manda o kit. */
 .inicio__qr {
-  width: min(100%, 14rem);
+  width: min(100%, 16rem);
   margin: 0 0 2rem;
   padding: 0.75rem;
   background: var(--cor-branco);
@@ -1391,7 +1391,7 @@ a {
      atravessa essas linhas na segunda, e os dados fecham embaixo. */
   .inicio {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 18rem;
+    grid-template-columns: minmax(0, 1fr) 21rem;
     column-gap: 3rem;
     align-items: start;
   }
