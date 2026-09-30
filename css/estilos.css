@@ -614,35 +614,6 @@ a {
   color: var(--cor-azul-claro);
 }
 
-/* QR code de abertura: um no do fluxograma com fundo branco, porque a
-   camera precisa de contraste alto para ler. No celular fica pequeno e
-   antes do titulo; em tela larga vira a coluna da direita do inicio.
-   Sobre o branco o rotulo usa o azul do curso, como manda o kit. */
-.inicio__qr {
-  width: min(100%, 16rem);
-  margin: 0 0 2rem;
-  padding: 0.75rem;
-  background: var(--cor-branco);
-  border: 1px solid var(--cor-azul-claro);
-  border-radius: var(--raio);
-}
-
-.inicio__qr img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.inicio__qr figcaption {
-  margin-top: 0.5rem;
-  font-family: var(--fonte-mono);
-  font-size: 0.68rem;
-  line-height: 1.5;
-  letter-spacing: 0.05em;
-  text-align: center;
-  color: var(--cor-azul-curso);
-}
-
 /* ---------------------------------------------------------------
    5b. Fluxograma de abertura
    E a peca central do BrandKit: a feira e o ponto de partida e o curso
@@ -1384,36 +1355,6 @@ a {
 @media (min-width: 64rem) {
   .cartao {
     padding: 1.6rem 1.5rem;
-  }
-
-  /* inicio em duas colunas: texto a esquerda, QR a direita. Os cinco
-     blocos de texto ocupam as linhas 1 a 5 da primeira coluna, o QR
-     atravessa essas linhas na segunda, e os dados fecham embaixo. */
-  .inicio {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 21rem;
-    column-gap: 3rem;
-    align-items: start;
-  }
-
-  .inicio > * {
-    grid-column: 1;
-  }
-
-  .inicio__qr {
-    grid-column: 2;
-    grid-row: 1 / span 5;
-    width: 100%;
-    margin: 0;
-    padding: 1rem;
-  }
-
-  .inicio__qr figcaption {
-    font-size: 0.74rem;
-  }
-
-  .inicio__dados {
-    grid-column: 1 / -1;
   }
 }
 
